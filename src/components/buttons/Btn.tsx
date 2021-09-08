@@ -10,7 +10,7 @@ export interface BtnProps {
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
-  color?: ButtonProps["color"] & CircularProgressProps["color"]
+  color?: ButtonProps["color"]
   /**
    * The variant to use.
    */
@@ -44,13 +44,13 @@ export interface BtnProps {
 export const Btn = ({ loading, children, ...props }: BtnProps): JSX.Element => {
 
   props.disabled = props.disabled || loading
-
+  const loadingColor: CircularProgressProps["color"] = props.color as CircularProgressProps["color"]
   return (
     <Button
       {...props}
     >
       {!loading && children}
-      {loading && <CircularProgress color={props.color} size={24} />}
+      {loading && <CircularProgress color={loadingColor} size={24} />}
     </Button>
   )
 }
