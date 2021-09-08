@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-typescript",
+    "@babel/plugin-proposal-export-namespace-from",
+    ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+  ]
+}
