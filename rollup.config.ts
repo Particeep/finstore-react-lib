@@ -33,5 +33,6 @@ export default {
       include: ['**/*.woff', '**/*.woff2'],
       limit: Infinity,
     })
-  ]
+  ],
+  external: ["@material-ui/core"]
 }
