@@ -1,12 +1,12 @@
 {
-  "name": "storybook",
+  "name": "@finstore/react-lib",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006 -s ./public:/public",
-    "build": "cross-env NODE_OPTIONS=--max_old_space_size=4096 build-storybook -o ../../public/storybook-dist",
+    "build": "build-storybook",
     "lint": "eslint --ext .tsx --ext .ts src/"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "@material-ui/lab": "4.0.0-alpha.57",
     "@material-ui/pickers": "3.3.10",
     "bignumber.js": "9.0.1",
+    "classnames": "2.3.1",
     "fbjs": "3.0.0",
     "immutability-helper": "3.1.1",
     "moment": "2.29.1",
@@ -43,7 +44,6 @@
     "@typescript-eslint/eslint-plugin": "4.18.0",
     "@typescript-eslint/parser": "4.18.0",
     "babel-loader": "8.2.2",
-    "cross-env": "7.0.3",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-config-react-app": "6.0.0",
