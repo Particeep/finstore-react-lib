@@ -1,0 +1,7 @@
+import { getAugmentedNamespace } from './_commonjsHelpers.js';
+import * as downshift_esm from '../node_modules/downshift/dist/downshift.esm.js';
+
+var require$$10 = /*@__PURE__*/getAugmentedNamespace(downshift_esm);
+
+export { require$$10 as default };
+//# sourceMappingURL=downshift.esm.js_commonjs-proxy.map

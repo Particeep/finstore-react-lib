@@ -1,0 +1,1 @@
+{"version":3,"file":"iconButton.js","sources":["../../../src/theme/props/iconButton.ts"],"sourcesContent":["import { IconButtonProps } from \"@material-ui/core\"\r\n\r\nexport const iconButton: IconButtonProps = {\r\n  disableRipple : true,\r\n  size          : \"small\"\r\n}\r\n"],"names":[],"mappings":"IAEa,UAAU,GAAoB;IACzC,aAAa,EAAG,IAAI;IACpB,IAAI,EAAY,OAAO;;;;;"}

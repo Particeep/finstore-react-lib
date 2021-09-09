@@ -1,0 +1,4 @@
+var reactIs = {exports: {}};
+
+export { reactIs as r };
+//# sourceMappingURL=index7.js_commonjs-module.map

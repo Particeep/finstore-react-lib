@@ -1,0 +1,1 @@
+{"version":3,"file":"button.js","sources":["../../../src/theme/props/button.ts"],"sourcesContent":["import { ButtonProps } from \"@material-ui/core/Button\"\r\n\r\nexport const button: ButtonProps = {\r\n  disableRipple    : true,\r\n  disableElevation : true\r\n}\r\n"],"names":[],"mappings":"IAEa,MAAM,GAAgB;IACjC,aAAa,EAAM,IAAI;IACvB,gBAAgB,EAAG,IAAI;;;;;"}
