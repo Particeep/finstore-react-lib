@@ -2,7 +2,7 @@ import { __assign } from '../../node_modules/tslib/tslib.es6.js';
 import React__default, { useState } from 'react';
 import { TableHead, TableRow, TableCell } from '@material-ui/core';
 import { defaultDateFilter, FiltersArrayCustom, FiltersDate, FiltersBoolean } from './filters/filters.js';
-import update from '../../node_modules/immutability-helper/index.js';
+import update from 'immutability-helper';
 import { useFilterStyles } from './styles/filterStyles.js';
 
 var getDefaultFilter = function (col) {

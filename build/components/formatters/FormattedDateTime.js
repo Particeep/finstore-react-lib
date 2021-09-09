@@ -1,6 +1,6 @@
 import React__default from 'react';
 import { FormattedDate, FormattedTime } from '../../node_modules/react-intl/lib/index.js';
-import moment from '../../node_modules/moment/moment.js';
+import moment from 'moment';
 import { T } from '../../conf/i18n.js';
 
 var FormattedDateTime = function (_a) {

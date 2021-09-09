@@ -1,7 +1,7 @@
 import React__default, { useState } from 'react';
 import clsx from '../../node_modules/clsx/dist/clsx.m.js';
 import { makeStyles, Card, CardHeader, IconButton, LinearProgress, Collapse, CardContent, CardActions } from '@material-ui/core';
-import default_1 from '../../node_modules/@material-ui/icons/ExpandMore.js';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 var useStyles = makeStyles(function (theme) { return ({
     noPadding: {
@@ -31,7 +31,7 @@ var Panel = function (props) {
                 React__default.createElement(IconButton, { className: clsx(classes.expand, (_a = {},
                         _a[classes.expandOpen] = expanded,
                         _a)), onClick: handleExpandClick },
-                    React__default.createElement(default_1, null)) }),
+                    React__default.createElement(ExpandMoreIcon, null)) }),
         loading &&
             React__default.createElement(LinearProgress, null),
         React__default.createElement(Collapse, { in: expanded, timeout: "auto", unmountOnExit: true },

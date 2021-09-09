@@ -1,6 +1,6 @@
 import React__default, { useState } from 'react';
 import { Toolbar, Fade, Typography, Menu, ListItem, Checkbox, ListItemText, TextField, InputAdornment } from '@material-ui/core';
-import classNames from '../../node_modules/classnames/index.js';
+import classNames from 'classnames';
 import { T } from '../../conf/i18n.js';
 import { useToolbarStyles } from './styles/toolbarStyles.js';
 import { IconBtn } from '../buttons/IconBtn.js';

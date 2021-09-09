@@ -2,7 +2,7 @@ import React__default from 'react';
 import { makeStyles, Button } from '@material-ui/core';
 import { FormattedNumber } from '../formatters/FormattedAmount.js';
 import { T } from '../../conf/i18n.js';
-import '../../node_modules/moment/moment.js';
+import 'moment';
 
 var useStyles = makeStyles(function (theme) { return ({
     root: {

@@ -1,7 +1,7 @@
 import { __assign } from '../../node_modules/tslib/tslib.es6.js';
 import React__default from 'react';
 import { LinearProgress, TableContainer, Table } from '@material-ui/core';
-import classNames from '../../node_modules/classnames/index.js';
+import classNames from 'classnames';
 import { buildFilterValues } from './filters/filters.js';
 import DatatableFooter from './DatatableFooter.js';
 import DatatableHead from './DatatableHead.js';

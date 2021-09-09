@@ -6,7 +6,7 @@ import { compareKeys } from '../helpers/helpers.js';
 import '../../inputs/AutocompleteInput.js';
 import '../../inputs/GeosuggestInput.js';
 import { ParticeepDatePicker } from '../../inputs/ParticeepDatePicker.js';
-import moment from '../../../node_modules/moment/moment.js';
+import moment from 'moment';
 
 var filterHeight = 33;
 var useStyles = makeStyles(function (theme) { return ({

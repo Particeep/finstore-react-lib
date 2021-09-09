@@ -1,5 +1,5 @@
 import { __assign } from '../../../node_modules/tslib/tslib.es6.js';
-import update from '../../../node_modules/immutability-helper/index.js';
+import update from 'immutability-helper';
 
 var CONSUMER_TABLES = [
     "partnersOnEntity", "PartnerCommissions", "webhooks", "transactionsWallet", "users",

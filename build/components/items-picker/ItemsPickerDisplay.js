@@ -3,7 +3,7 @@ import { T } from '../../conf/i18n.js';
 import { makeStyles, useMediaQuery, Typography, Grid, TextField, Button } from '@material-ui/core';
 import ItemsList from './ItemsList.js';
 import ItemsPickerHead from './ItemsPickerHead.js';
-import classNames from '../../node_modules/classnames/index.js';
+import classNames from 'classnames';
 
 var useStyles = makeStyles(function (theme) { return ({
     root: {

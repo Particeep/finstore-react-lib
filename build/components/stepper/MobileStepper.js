@@ -2,7 +2,7 @@ import React__default from 'react';
 import { makeStyles, MobileStepper as MobileStepper$1, StepLabel } from '@material-ui/core';
 import { IconBtn } from '../buttons/IconBtn.js';
 import '../buttons/ActionMenu.js';
-import default_1 from '../../node_modules/@material-ui/icons/KeyboardArrowLeft.js';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 
 var useStyles = makeStyles(function (theme) { return ({
     root: {
@@ -36,7 +36,7 @@ var MobileStepper = function (_a) {
     var classes = useStyles();
     return (React__default.createElement(MobileStepper$1, { steps: stepsSize, activeStep: currentStep, backButton: React__default.createElement("div", { className: classes.root },
             React__default.createElement(IconBtn, { onClick: onPrev, disabled: currentStep === 0 },
-                React__default.createElement(default_1, null)),
+                React__default.createElement(KeyboardArrowLeft, null)),
             React__default.createElement("div", { className: classes.labelContainer },
                 React__default.createElement(StepLabel, { classes: { label: classes.label }, icon: React__default.createElement("span", { className: classes.icon }, currentStep + 1) }, stepName))), nextButton: React__default.createElement(React__default.Fragment, null) }));
 };

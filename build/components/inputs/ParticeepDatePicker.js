@@ -1,6 +1,6 @@
 import { __assign } from '../../node_modules/tslib/tslib.es6.js';
 import React__default from 'react';
-import moment from '../../node_modules/moment/moment.js';
+import moment from 'moment/moment';
 import { T } from '../../conf/i18n.js';
 import { DatePicker } from '../../node_modules/@material-ui/pickers/esm/DatePicker.js';
 
