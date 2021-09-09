@@ -2,19 +2,19 @@
   "name": "@finstore/react-lib",
   "version": "1.0.0",
   "description": "Finstore react lib",
-  "main": "build/index.js",
-  "module": "build/index.esm.js",
-  "types": "build/index.d.ts",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "license": "ISC",
   "scripts": {
     "storybook": "start-storybook -p 6006 -s ./public:/public",
-    "publish": "rollup -c",
-    "build": "build-storybook",
+    "build-storybook": "build-storybook",
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "prepublish": "tsc --declaration",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "lint": "eslint --ext .tsx --ext .ts src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "peerDependencies": {
     "@material-ui/core": ">=4.11.3",
     "react": ">=17.0.1",
@@ -43,15 +43,14 @@
     "@babel/plugin-proposal-private-property-in-object": "7.14.5",
     "@babel/plugin-transform-typescript": "7.13.0",
     "@babel/preset-typescript": "7.13.0",
-    "@rollup/plugin-commonjs": "20.0.0",
-    "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "13.0.4",
     "@storybook/addon-a11y": "6.2.5",
     "@storybook/addon-actions": "6.1.21",
     "@storybook/addon-controls": "6.2.1",
     "@storybook/addon-essentials": "6.1.21",
     "@storybook/addon-links": "6.1.21",
     "@storybook/react": "6.1.21",
+    "@types/react": "17.0.20",
+    "@types/react-dom": "17.0.9",
     "@typescript-eslint/eslint-plugin": "4.18.0",
     "@typescript-eslint/parser": "4.18.0",
     "babel-loader": "8.2.2",
@@ -70,15 +69,13 @@
     "msw": "0.28.1",
     "msw-storybook-addon": "1.1.0",
     "react-docgen-typescript-plugin": "0.7.0",
-    "rollup": "2.56.3",
-    "rollup-plugin-copy": "3.4.0",
-    "rollup-plugin-peer-deps-external": "2.2.4",
-    "rollup-plugin-typescript2": "0.30.0",
-    "rollup-plugin-url": "3.0.1",
     "storybook-addon-jsx": "7.3.7",
     "typescript": "4.2.3"
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "files": [
+    "/lib"
+  ]
 }
