@@ -1,9 +1,7 @@
 import { StyleRules } from "@material-ui/core/styles/withStyles"
-import { interUI, interUIBold } from "../fonts"
 
 export const cssBaseLine: Partial<StyleRules<any>> = {
   "@global" : {
-    "@font-face" : [ interUI, interUIBold ],
     "*"          : { // Firefox
       scrollbarColor : "light",
       scrollbarWidth : "thin"
