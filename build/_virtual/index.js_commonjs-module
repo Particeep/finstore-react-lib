@@ -1,4 +1,0 @@
-var dist = {exports: {}};
-
-export { dist as d };
-//# sourceMappingURL=index.js_commonjs-module.map

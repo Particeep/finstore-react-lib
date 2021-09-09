@@ -1,4 +1,0 @@
-var immutabilityHelper = {exports: {}};
-
-export { immutabilityHelper as i };
-//# sourceMappingURL=index2.js_commonjs-module.map

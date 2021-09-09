@@ -1,1 +1,0 @@
-{"version":3,"file":"inputLabel.js","sources":["../../../src/theme/props/inputLabel.ts"],"sourcesContent":["import { InputLabelProps } from \"@material-ui/core\"\r\n\r\nexport const inputLabel: InputLabelProps = {\r\n  shrink : true\r\n}\r\n"],"names":[],"mappings":"IAEa,UAAU,GAAoB;IACzC,MAAM,EAAG,IAAI;;;;;"}

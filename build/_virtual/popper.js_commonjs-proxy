@@ -1,7 +1,0 @@
-import { getAugmentedNamespace } from './_commonjsHelpers.js';
-import * as popper from '../node_modules/react-popper/node_modules/popper.js/dist/esm/popper.js';
-
-var require$$2 = /*@__PURE__*/getAugmentedNamespace(popper);
-
-export { require$$2 as default };
-//# sourceMappingURL=popper.js_commonjs-proxy.map

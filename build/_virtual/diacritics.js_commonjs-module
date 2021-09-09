@@ -1,4 +1,0 @@
-var diacritics = {exports: {}};
-
-export { diacritics as d };
-//# sourceMappingURL=diacritics.js_commonjs-module.map

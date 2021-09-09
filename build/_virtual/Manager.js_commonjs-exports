@@ -1,4 +1,0 @@
-var Manager = {};
-
-export { Manager as __exports };
-//# sourceMappingURL=Manager.js_commonjs-exports.map

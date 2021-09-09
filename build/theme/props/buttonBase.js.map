@@ -1,1 +1,0 @@
-{"version":3,"file":"buttonBase.js","sources":["../../../src/theme/props/buttonBase.ts"],"sourcesContent":["import { ButtonBaseProps } from \"@material-ui/core/ButtonBase\"\r\n\r\nexport const buttonBase: ButtonBaseProps = {\r\n  disableRipple : true\r\n}\r\n"],"names":[],"mappings":"IAEa,UAAU,GAAoB;IACzC,aAAa,EAAG,IAAI;;;;;"}

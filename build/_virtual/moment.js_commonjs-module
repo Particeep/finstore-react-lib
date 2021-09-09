@@ -1,4 +1,0 @@
-var moment = {exports: {}};
-
-export { moment as m };
-//# sourceMappingURL=moment.js_commonjs-module.map
