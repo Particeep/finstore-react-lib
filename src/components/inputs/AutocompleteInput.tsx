@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent } from "react"
-
+import Autocomplete, { AutocompleteRenderInputParams } from "@material-ui/lab/Autocomplete"
 import { makeStyles, TextField } from "@material-ui/core"
 import { ClassNameMap } from "@material-ui/core/styles/withStyles"
 import { paper } from "../../theme/overrides/paper"
@@ -58,7 +58,7 @@ export const AutocompleteInput = ({ options, placeholder, id, onChange, onSelect
 
   const [ inputValue, setInputValue ]: Array<any> = useState<string>("")
 
-  //const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => (<TextField {...params} fullWidth placeholder={placeholder} />)
+  const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => (<TextField {...params} fullWidth placeholder={placeholder} />)
 
   const renderOption = (option: AutocompleteData): JSX.Element => {
     const position: number = option.label.toLowerCase().indexOf(inputValue.toLowerCase())
@@ -80,12 +80,12 @@ export const AutocompleteInput = ({ options, placeholder, id, onChange, onSelect
     return option.label
   }
 
-  const handleInputChange = (event: SyntheticEvent<any>, newInputValue: string): void => {
+  const handleInputChange = (_: SyntheticEvent<any>, newInputValue: string): void => {
     onChange(newInputValue)
     setInputValue(newInputValue)
   }
 
-  const handleChange = (event: SyntheticEvent<any>, newValue: any): void => {
+  const handleChange = (_: SyntheticEvent<any>, newValue: any): void => {
     onSelect(newValue)
     if (!newValue) {
       setInputValue("")
@@ -93,8 +93,7 @@ export const AutocompleteInput = ({ options, placeholder, id, onChange, onSelect
   }
 
   return (
-      <div>
-        {/*<Autocomplete
+    <Autocomplete
       className={classes.root}
       classes={{
         inputRoot : classes.input,
@@ -109,7 +108,6 @@ export const AutocompleteInput = ({ options, placeholder, id, onChange, onSelect
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       {...id}
-    />*/}
-      </div>
+    />
   )
 }

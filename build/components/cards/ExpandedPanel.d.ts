@@ -5,9 +5,6 @@ export interface ExpandedPanelItem {
     hide?: boolean;
 }
 export interface ExpandedPanelProps {
-    /**
-     * List of expanded panels
-     */
     panels: Array<ExpandedPanelItem>;
 }
 export declare const ExpandedPanel: ({ panels }: ExpandedPanelProps) => JSX.Element;

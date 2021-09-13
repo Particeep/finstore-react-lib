@@ -4,20 +4,24 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var React$2 = require('react');
 var core = require('@material-ui/core');
-var styles = require('@material-ui/core/styles');
+var styles$1 = require('@material-ui/core/styles');
 var icons = require('@material-ui/icons');
 var createPalette = require('@material-ui/core/styles/createPalette');
 var createTypography = require('@material-ui/core/styles/createTypography');
 var createSpacing = require('@material-ui/core/styles/createSpacing');
 var transitions = require('@material-ui/core/styles/transitions');
+var Popper$3 = require('@material-ui/core/Popper');
+var ListSubheader = require('@material-ui/core/ListSubheader');
+var Paper = require('@material-ui/core/Paper');
+var IconButton = require('@material-ui/core/IconButton');
+var Chip = require('@material-ui/core/Chip');
+var require$$0 = require('@material-ui/core/utils');
 var require$$5 = require('@material-ui/core/Grow');
 var require$$6 = require('@material-ui/core/MenuList');
 var require$$7 = require('@material-ui/core/MenuItem');
-var require$$8 = require('@material-ui/core/Paper');
 var require$$9 = require('@material-ui/core/TextField');
 var pickers = require('@material-ui/pickers');
 var colorManipulator = require('@material-ui/core/styles/colorManipulator');
-var require$$0 = require('@material-ui/core/utils');
 var ReactDOM = require('react-dom');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -48,15 +52,19 @@ var createPalette__default = /*#__PURE__*/_interopDefaultLegacy(createPalette);
 var createTypography__default = /*#__PURE__*/_interopDefaultLegacy(createTypography);
 var createSpacing__default = /*#__PURE__*/_interopDefaultLegacy(createSpacing);
 var transitions__default = /*#__PURE__*/_interopDefaultLegacy(transitions);
+var Popper__default = /*#__PURE__*/_interopDefaultLegacy(Popper$3);
+var ListSubheader__default = /*#__PURE__*/_interopDefaultLegacy(ListSubheader);
+var Paper__default = /*#__PURE__*/_interopDefaultLegacy(Paper);
+var IconButton__default = /*#__PURE__*/_interopDefaultLegacy(IconButton);
+var Chip__default = /*#__PURE__*/_interopDefaultLegacy(Chip);
+var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
 var require$$5__default = /*#__PURE__*/_interopDefaultLegacy(require$$5);
 var require$$6__default = /*#__PURE__*/_interopDefaultLegacy(require$$6);
 var require$$7__default = /*#__PURE__*/_interopDefaultLegacy(require$$7);
-var require$$8__default = /*#__PURE__*/_interopDefaultLegacy(require$$8);
 var require$$9__default = /*#__PURE__*/_interopDefaultLegacy(require$$9);
-var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
-var useStyles$j = styles.makeStyles(function (theme) { return ({
+var useStyles$j = styles$1.makeStyles(function (theme) { return ({
     root: {
         textAlign: "center",
         lineHeight: 1,
@@ -184,117 +192,72 @@ var BtnGroup = function (props) {
     return (React__default['default'].createElement(core.ButtonGroup, { variant: variant, color: color }, buttons.map(function (button) { return (React__default['default'].createElement(core.Button, { key: button.label, onClick: button.onClick, endIcon: button.icon }, button.label)); })));
 };
 
-var palette = createPalette__default['default']({
-    primary: {
-        main: "#5702BC"
-    },
-    secondary: {
-        main: "#ff3f1a"
-    },
-    success: {
-        main: "#02bc79"
-    },
-    info: {
-        main: "#2196f3"
-    },
-    warning: {
-        main: "#ffb920"
-    },
-    error: {
-        main: "#ff5047"
-    },
-    background: {
-        default: "#fbfbfb"
-    },
-    divider: "#eaeaea",
-    text: {
-        primary: "#1c0b33"
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties$4(source, excluded) {
+  if (source == null) return {};
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
     }
-});
+  }
 
-var customTheme = {
-    palette: palette,
-    transitions: transitions__default['default'],
-    typography: createTypography__default['default'](palette, {
-        fontFamily: "'Inter UI', Roboto",
-        allVariants: {
-            color: "#1c0b33"
-        },
-        body1: {
-            fontSize: 14
-        },
-        body2: {
-            fontSize: 12
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends$5() {
+  _extends$5 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
         }
-    }),
-    spacing: createSpacing__default['default'](8),
-    list: {
-        item: {
-            height: 33
-        }
-    },
-    btn: {
-        borderRadius: 8,
-        iconSize: 16
-    },
-    inputs: {
-        height: 40,
-        border: {
-            color: "#dfe1e5",
-            focus: "#aeb4be",
-            radius: 6
-        }
-    },
-    link: {
-        color: "#2182c3"
-    },
-    card: {
-        boxShadow: "0 2px 7px 0 rgba(0, 0, 0, 0.04)",
-        borderRadius: 9,
-        header: {
-            backgroundColor: "#f9f9fa",
-            size: {
-                big: 70,
-                medium: 60
-            }
-        }
+      }
     }
-};
 
-var defaultPaper = {
-    boxShadow: "none",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: customTheme.inputs.border.color,
-    borderRadius: customTheme.inputs.border.radius,
-    background: customTheme.palette.background.paper
-};
-var paper = {
-    elevation1: __assign({}, defaultPaper),
-    elevation8: __assign({}, defaultPaper)
-};
+    return target;
+  };
 
-var useStyles$g = core.makeStyles({
-    root: {
-        width: "100%"
-    },
-    highlightedPart: {
-        fontWeight: 600
-    },
-    input: {
-        padding: "0px !important"
-    },
-    listbox: {
-        padding: 0
-    },
-    paper: paper
-});
-var AutocompleteInput = function (_a) {
-    _a.options; _a.placeholder; _a.id; _a.onChange; _a.onSelect;
-    useStyles$g();
-    var _b = React$2.useState(""); _b[0]; _b[1];
-    return (React__default['default'].createElement("div", null));
-};
+  return _extends$5.apply(this, arguments);
+}
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -320,240 +283,6 @@ function getAugmentedNamespace(n) {
 function commonjsRequire (path) {
 	throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
-
-var dist = {exports: {}};
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-var validateFormat = process.env.NODE_ENV !== "production" ? function (format) {
-  if (format === undefined) {
-    throw new Error('invariant(...): Second argument must be a string.');
-  }
-} : function (format) {};
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments to provide
- * information about what broke and what you were expecting.
- *
- * The invariant message will be stripped in production, but the invariant will
- * remain to ensure logic does not differ in production.
- */
-
-function invariant$1(condition, format) {
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return String(args[argIndex++]);
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // Skip invariant's own stack frame.
-
-    throw error;
-  }
-}
-
-var invariant_1 = invariant$1;
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-
-
-var emptyFunction$2 = function emptyFunction() {};
-
-emptyFunction$2.thatReturns = makeEmptyFunction;
-emptyFunction$2.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction$2.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction$2.thatReturnsNull = makeEmptyFunction(null);
-
-emptyFunction$2.thatReturnsThis = function () {
-  return this;
-};
-
-emptyFunction$2.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-var emptyFunction_1 = emptyFunction$2;
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-var emptyFunction$1 = emptyFunction_1;
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-
-function printWarning$2(format) {
-  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    args[_key - 1] = arguments[_key];
-  }
-
-  var argIndex = 0;
-  var message = 'Warning: ' + format.replace(/%s/g, function () {
-    return args[argIndex++];
-  });
-
-  if (typeof console !== 'undefined') {
-    console.error(message);
-  }
-
-  try {
-    // --- Welcome to debugging React ---
-    // This error was thrown as a convenience so that you can use this stack
-    // to find the callsite that caused this warning to fire.
-    throw new Error(message);
-  } catch (x) {}
-}
-
-var warning = process.env.NODE_ENV !== "production" ? function (condition, format) {
-  if (format === undefined) {
-    throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-  }
-
-  if (!condition) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-      args[_key2 - 2] = arguments[_key2];
-    }
-
-    printWarning$2.apply(void 0, [format].concat(args));
-  }
-} : emptyFunction$1;
-var warning_1 = warning;
-
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
 
 var propTypes = {exports: {}};
 
@@ -763,6 +492,95 @@ if (process.env.NODE_ENV === 'production') {
   reactIs$2.exports = reactIs_development$1;
 }
 
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -781,14 +599,14 @@ var ReactPropTypesSecret_1 = ReactPropTypesSecret$3;
  * LICENSE file in the root directory of this source tree.
  */
 
-var printWarning$1 = function() {};
+var printWarning$2 = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
   var ReactPropTypesSecret$2 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
   var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
 
-  printWarning$1 = function(text) {
+  printWarning$2 = function(text) {
     var message = 'Warning: ' + text;
     if (typeof console !== 'undefined') {
       console.error(message);
@@ -837,7 +655,7 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
           error = ex;
         }
         if (error && !(error instanceof Error)) {
-          printWarning$1(
+          printWarning$2(
             (componentName || 'React class') + ': type specification of ' +
             location + ' `' + typeSpecName + '` is invalid; the type checker ' +
             'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
@@ -853,7 +671,7 @@ function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) 
 
           var stack = getStack ? getStack() : '';
 
-          printWarning$1(
+          printWarning$2(
             'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
           );
         }
@@ -889,10 +707,10 @@ var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
 var checkPropTypes = checkPropTypes_1;
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
-var printWarning = function() {};
+var printWarning$1 = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  printWarning = function(text) {
+  printWarning$1 = function(text) {
     var message = 'Warning: ' + text;
     if (typeof console !== 'undefined') {
       console.error(message);
@@ -1068,7 +886,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
             // Avoid spamming the console because they are often not actionable except for lib authors
             manualPropTypeWarningCount < 3
           ) {
-            printWarning(
+            printWarning$1(
               'You are manually calling a React.PropTypes validation ' +
               'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
               'and will throw in the standalone `prop-types` package. ' +
@@ -1181,12 +999,12 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
     if (!Array.isArray(expectedValues)) {
       if (process.env.NODE_ENV !== 'production') {
         if (arguments.length > 1) {
-          printWarning(
+          printWarning$1(
             'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
             'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
           );
         } else {
-          printWarning('Invalid argument supplied to oneOf, expected an array.');
+          printWarning$1('Invalid argument supplied to oneOf, expected an array.');
         }
       }
       return emptyFunctionThatReturnsNull;
@@ -1237,14 +1055,14 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      process.env.NODE_ENV !== 'production' ? printWarning$1('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunctionThatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        printWarning(
+        printWarning$1(
           'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
           'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
         );
@@ -1474,9 +1292,9 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
 
 var ReactPropTypesSecret = ReactPropTypesSecret_1;
 
-function emptyFunction() {}
+function emptyFunction$2() {}
 function emptyFunctionWithReset() {}
-emptyFunctionWithReset.resetWarningCache = emptyFunction;
+emptyFunctionWithReset.resetWarningCache = emptyFunction$2;
 
 var factoryWithThrowingShims = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -1518,7 +1336,7 @@ var factoryWithThrowingShims = function() {
     exact: getShim,
 
     checkPropTypes: emptyFunctionWithReset,
-    resetWarningCache: emptyFunction
+    resetWarningCache: emptyFunction$2
   };
 
   ReactPropTypes.PropTypes = ReactPropTypes;
@@ -1547,6 +1365,2408 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var PropTypes = propTypes.exports;
+
+function toVal(mix) {
+	var k, y, str='';
+
+	if (typeof mix === 'string' || typeof mix === 'number') {
+		str += mix;
+	} else if (typeof mix === 'object') {
+		if (Array.isArray(mix)) {
+			for (k=0; k < mix.length; k++) {
+				if (mix[k]) {
+					if (y = toVal(mix[k])) {
+						str && (str += ' ');
+						str += y;
+					}
+				}
+			}
+		} else {
+			for (k in mix) {
+				if (mix[k]) {
+					str && (str += ' ');
+					str += k;
+				}
+			}
+		}
+	}
+
+	return str;
+}
+
+function clsx () {
+	var i=0, tmp, x, str='';
+	while (i < arguments.length) {
+		if (tmp = arguments[i++]) {
+			if (x = toVal(tmp)) {
+				str && (str += ' ');
+				str += x;
+			}
+		}
+	}
+	return str;
+}
+
+/**
+ * @ignore - internal component.
+ */
+
+var CloseIcon = require$$0.createSvgIcon( /*#__PURE__*/React__namespace.createElement("path", {
+  d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+}), 'Close');
+
+/**
+ * @ignore - internal component.
+ */
+
+var ArrowDropDownIcon = require$$0.createSvgIcon( /*#__PURE__*/React__namespace.createElement("path", {
+  d: "M7 10l5 5 5-5z"
+}), 'ArrowDropDown');
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _typeof$1(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof$1 = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof$1 = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof$1(obj);
+}
+
+// Give up on IE 11 support for this feature
+
+function stripDiacritics(string) {
+  return typeof string.normalize !== 'undefined' ? string.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : string;
+}
+
+function createFilterOptions() {
+  var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _config$ignoreAccents = config.ignoreAccents,
+      ignoreAccents = _config$ignoreAccents === void 0 ? true : _config$ignoreAccents,
+      _config$ignoreCase = config.ignoreCase,
+      ignoreCase = _config$ignoreCase === void 0 ? true : _config$ignoreCase,
+      limit = config.limit,
+      _config$matchFrom = config.matchFrom,
+      matchFrom = _config$matchFrom === void 0 ? 'any' : _config$matchFrom,
+      stringify = config.stringify,
+      _config$trim = config.trim,
+      trim = _config$trim === void 0 ? false : _config$trim;
+  return function (options, _ref) {
+    var inputValue = _ref.inputValue,
+        getOptionLabel = _ref.getOptionLabel;
+    var input = trim ? inputValue.trim() : inputValue;
+
+    if (ignoreCase) {
+      input = input.toLowerCase();
+    }
+
+    if (ignoreAccents) {
+      input = stripDiacritics(input);
+    }
+
+    var filteredOptions = options.filter(function (option) {
+      var candidate = (stringify || getOptionLabel)(option);
+
+      if (ignoreCase) {
+        candidate = candidate.toLowerCase();
+      }
+
+      if (ignoreAccents) {
+        candidate = stripDiacritics(candidate);
+      }
+
+      return matchFrom === 'start' ? candidate.indexOf(input) === 0 : candidate.indexOf(input) > -1;
+    });
+    return typeof limit === 'number' ? filteredOptions.slice(0, limit) : filteredOptions;
+  };
+} // To replace with .findIndex() once we stop IE 11 support.
+
+function findIndex$1(array, comp) {
+  for (var i = 0; i < array.length; i += 1) {
+    if (comp(array[i])) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+var defaultFilterOptions = createFilterOptions(); // Number of options to jump in list box when pageup and pagedown keys are used.
+
+var pageSize = 5;
+function useAutocomplete(props) {
+  var _props$autoComplete = props.autoComplete,
+      autoComplete = _props$autoComplete === void 0 ? false : _props$autoComplete,
+      _props$autoHighlight = props.autoHighlight,
+      autoHighlight = _props$autoHighlight === void 0 ? false : _props$autoHighlight,
+      _props$autoSelect = props.autoSelect,
+      autoSelect = _props$autoSelect === void 0 ? false : _props$autoSelect,
+      _props$blurOnSelect = props.blurOnSelect,
+      blurOnSelect = _props$blurOnSelect === void 0 ? false : _props$blurOnSelect,
+      _props$clearOnBlur = props.clearOnBlur,
+      clearOnBlur = _props$clearOnBlur === void 0 ? !props.freeSolo : _props$clearOnBlur,
+      _props$clearOnEscape = props.clearOnEscape,
+      clearOnEscape = _props$clearOnEscape === void 0 ? false : _props$clearOnEscape,
+      _props$componentName = props.componentName,
+      componentName = _props$componentName === void 0 ? 'useAutocomplete' : _props$componentName,
+      _props$debug = props.debug,
+      debug = _props$debug === void 0 ? false : _props$debug,
+      _props$defaultValue = props.defaultValue,
+      defaultValue = _props$defaultValue === void 0 ? props.multiple ? [] : null : _props$defaultValue,
+      _props$disableClearab = props.disableClearable,
+      disableClearable = _props$disableClearab === void 0 ? false : _props$disableClearab,
+      _props$disableCloseOn = props.disableCloseOnSelect,
+      disableCloseOnSelect = _props$disableCloseOn === void 0 ? false : _props$disableCloseOn,
+      _props$disabledItemsF = props.disabledItemsFocusable,
+      disabledItemsFocusable = _props$disabledItemsF === void 0 ? false : _props$disabledItemsF,
+      _props$disableListWra = props.disableListWrap,
+      disableListWrap = _props$disableListWra === void 0 ? false : _props$disableListWra,
+      _props$filterOptions = props.filterOptions,
+      filterOptions = _props$filterOptions === void 0 ? defaultFilterOptions : _props$filterOptions,
+      _props$filterSelected = props.filterSelectedOptions,
+      filterSelectedOptions = _props$filterSelected === void 0 ? false : _props$filterSelected,
+      _props$freeSolo = props.freeSolo,
+      freeSolo = _props$freeSolo === void 0 ? false : _props$freeSolo,
+      getOptionDisabled = props.getOptionDisabled,
+      _props$getOptionLabel = props.getOptionLabel,
+      getOptionLabelProp = _props$getOptionLabel === void 0 ? function (option) {
+    return option;
+  } : _props$getOptionLabel,
+      _props$getOptionSelec = props.getOptionSelected,
+      getOptionSelected = _props$getOptionSelec === void 0 ? function (option, value) {
+    return option === value;
+  } : _props$getOptionSelec,
+      groupBy = props.groupBy,
+      _props$handleHomeEndK = props.handleHomeEndKeys,
+      handleHomeEndKeys = _props$handleHomeEndK === void 0 ? !props.freeSolo : _props$handleHomeEndK,
+      idProp = props.id,
+      _props$includeInputIn = props.includeInputInList,
+      includeInputInList = _props$includeInputIn === void 0 ? false : _props$includeInputIn,
+      inputValueProp = props.inputValue,
+      _props$multiple = props.multiple,
+      multiple = _props$multiple === void 0 ? false : _props$multiple,
+      onChange = props.onChange,
+      onClose = props.onClose,
+      onHighlightChange = props.onHighlightChange,
+      onInputChange = props.onInputChange,
+      onOpen = props.onOpen,
+      openProp = props.open,
+      _props$openOnFocus = props.openOnFocus,
+      openOnFocus = _props$openOnFocus === void 0 ? false : _props$openOnFocus,
+      options = props.options,
+      _props$selectOnFocus = props.selectOnFocus,
+      selectOnFocus = _props$selectOnFocus === void 0 ? !props.freeSolo : _props$selectOnFocus,
+      valueProp = props.value;
+  var id = require$$0.unstable_useId(idProp);
+  var getOptionLabel = getOptionLabelProp;
+
+  if (process.env.NODE_ENV !== 'production') {
+    getOptionLabel = function getOptionLabel(option) {
+      var optionLabel = getOptionLabelProp(option);
+
+      if (typeof optionLabel !== 'string') {
+        var erroneousReturn = optionLabel === undefined ? 'undefined' : "".concat(_typeof$1(optionLabel), " (").concat(optionLabel, ")");
+        console.error("Material-UI: The `getOptionLabel` method of ".concat(componentName, " returned ").concat(erroneousReturn, " instead of a string for ").concat(JSON.stringify(option), "."));
+      }
+
+      return optionLabel;
+    };
+  }
+
+  var ignoreFocus = React__namespace.useRef(false);
+  var firstFocus = React__namespace.useRef(true);
+  var inputRef = React__namespace.useRef(null);
+  var listboxRef = React__namespace.useRef(null);
+
+  var _React$useState = React__namespace.useState(null),
+      anchorEl = _React$useState[0],
+      setAnchorEl = _React$useState[1];
+
+  var _React$useState2 = React__namespace.useState(-1),
+      focusedTag = _React$useState2[0],
+      setFocusedTag = _React$useState2[1];
+
+  var defaultHighlighted = autoHighlight ? 0 : -1;
+  var highlightedIndexRef = React__namespace.useRef(defaultHighlighted);
+
+  var _useControlled = require$$0.useControlled({
+    controlled: valueProp,
+    default: defaultValue,
+    name: componentName
+  }),
+      _useControlled2 = _slicedToArray(_useControlled, 2),
+      value = _useControlled2[0],
+      setValue = _useControlled2[1];
+
+  var _useControlled3 = require$$0.useControlled({
+    controlled: inputValueProp,
+    default: '',
+    name: componentName,
+    state: 'inputValue'
+  }),
+      _useControlled4 = _slicedToArray(_useControlled3, 2),
+      inputValue = _useControlled4[0],
+      setInputValue = _useControlled4[1];
+
+  var _React$useState3 = React__namespace.useState(false),
+      focused = _React$useState3[0],
+      setFocused = _React$useState3[1];
+
+  var resetInputValue = require$$0.useEventCallback(function (event, newValue) {
+    var newInputValue;
+
+    if (multiple) {
+      newInputValue = '';
+    } else if (newValue == null) {
+      newInputValue = '';
+    } else {
+      var optionLabel = getOptionLabel(newValue);
+      newInputValue = typeof optionLabel === 'string' ? optionLabel : '';
+    }
+
+    if (inputValue === newInputValue) {
+      return;
+    }
+
+    setInputValue(newInputValue);
+
+    if (onInputChange) {
+      onInputChange(event, newInputValue, 'reset');
+    }
+  });
+  React__namespace.useEffect(function () {
+    resetInputValue(null, value);
+  }, [value, resetInputValue]);
+
+  var _useControlled5 = require$$0.useControlled({
+    controlled: openProp,
+    default: false,
+    name: componentName,
+    state: 'open'
+  }),
+      _useControlled6 = _slicedToArray(_useControlled5, 2),
+      open = _useControlled6[0],
+      setOpenState = _useControlled6[1];
+
+  var inputValueIsSelectedValue = !multiple && value != null && inputValue === getOptionLabel(value);
+  var popupOpen = open;
+  var filteredOptions = popupOpen ? filterOptions(options.filter(function (option) {
+    if (filterSelectedOptions && (multiple ? value : [value]).some(function (value2) {
+      return value2 !== null && getOptionSelected(option, value2);
+    })) {
+      return false;
+    }
+
+    return true;
+  }), // we use the empty string to manipulate `filterOptions` to not filter any options
+  // i.e. the filter predicate always returns true
+  {
+    inputValue: inputValueIsSelectedValue ? '' : inputValue,
+    getOptionLabel: getOptionLabel
+  }) : [];
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (value !== null && !freeSolo && options.length > 0) {
+      var missingValue = (multiple ? value : [value]).filter(function (value2) {
+        return !options.some(function (option) {
+          return getOptionSelected(option, value2);
+        });
+      });
+
+      if (missingValue.length > 0) {
+        console.warn(["Material-UI: The value provided to ".concat(componentName, " is invalid."), "None of the options match with `".concat(missingValue.length > 1 ? JSON.stringify(missingValue) : JSON.stringify(missingValue[0]), "`."), 'You can use the `getOptionSelected` prop to customize the equality test.'].join('\n'));
+      }
+    }
+  }
+
+  var focusTag = require$$0.useEventCallback(function (tagToFocus) {
+    if (tagToFocus === -1) {
+      inputRef.current.focus();
+    } else {
+      anchorEl.querySelector("[data-tag-index=\"".concat(tagToFocus, "\"]")).focus();
+    }
+  }); // Ensure the focusedTag is never inconsistent
+
+  React__namespace.useEffect(function () {
+    if (multiple && focusedTag > value.length - 1) {
+      setFocusedTag(-1);
+      focusTag(-1);
+    }
+  }, [value, multiple, focusedTag, focusTag]);
+
+  function validOptionIndex(index, direction) {
+    if (!listboxRef.current || index === -1) {
+      return -1;
+    }
+
+    var nextFocus = index;
+
+    while (true) {
+      // Out of range
+      if (direction === 'next' && nextFocus === filteredOptions.length || direction === 'previous' && nextFocus === -1) {
+        return -1;
+      }
+
+      var option = listboxRef.current.querySelector("[data-option-index=\"".concat(nextFocus, "\"]")); // Same logic as MenuList.js
+
+      var nextFocusDisabled = disabledItemsFocusable ? false : option && (option.disabled || option.getAttribute('aria-disabled') === 'true');
+
+      if (option && !option.hasAttribute('tabindex') || nextFocusDisabled) {
+        // Move to the next element.
+        nextFocus += direction === 'next' ? 1 : -1;
+      } else {
+        return nextFocus;
+      }
+    }
+  }
+
+  var setHighlightedIndex = require$$0.useEventCallback(function (_ref2) {
+    var event = _ref2.event,
+        index = _ref2.index,
+        _ref2$reason = _ref2.reason,
+        reason = _ref2$reason === void 0 ? 'auto' : _ref2$reason;
+    highlightedIndexRef.current = index; // does the index exist?
+
+    if (index === -1) {
+      inputRef.current.removeAttribute('aria-activedescendant');
+    } else {
+      inputRef.current.setAttribute('aria-activedescendant', "".concat(id, "-option-").concat(index));
+    }
+
+    if (onHighlightChange) {
+      onHighlightChange(event, index === -1 ? null : filteredOptions[index], reason);
+    }
+
+    if (!listboxRef.current) {
+      return;
+    }
+
+    var prev = listboxRef.current.querySelector('[data-focus]');
+
+    if (prev) {
+      prev.removeAttribute('data-focus');
+    }
+
+    var listboxNode = listboxRef.current.parentElement.querySelector('[role="listbox"]'); // "No results"
+
+    if (!listboxNode) {
+      return;
+    }
+
+    if (index === -1) {
+      listboxNode.scrollTop = 0;
+      return;
+    }
+
+    var option = listboxRef.current.querySelector("[data-option-index=\"".concat(index, "\"]"));
+
+    if (!option) {
+      return;
+    }
+
+    option.setAttribute('data-focus', 'true'); // Scroll active descendant into view.
+    // Logic copied from https://www.w3.org/TR/wai-aria-practices/examples/listbox/js/listbox.js
+    //
+    // Consider this API instead once it has a better browser support:
+    // .scrollIntoView({ scrollMode: 'if-needed', block: 'nearest' });
+
+    if (listboxNode.scrollHeight > listboxNode.clientHeight && reason !== 'mouse') {
+      var element = option;
+      var scrollBottom = listboxNode.clientHeight + listboxNode.scrollTop;
+      var elementBottom = element.offsetTop + element.offsetHeight;
+
+      if (elementBottom > scrollBottom) {
+        listboxNode.scrollTop = elementBottom - listboxNode.clientHeight;
+      } else if (element.offsetTop - element.offsetHeight * (groupBy ? 1.3 : 0) < listboxNode.scrollTop) {
+        listboxNode.scrollTop = element.offsetTop - element.offsetHeight * (groupBy ? 1.3 : 0);
+      }
+    }
+  });
+  var changeHighlightedIndex = require$$0.useEventCallback(function (_ref3) {
+    var event = _ref3.event,
+        diff = _ref3.diff,
+        _ref3$direction = _ref3.direction,
+        direction = _ref3$direction === void 0 ? 'next' : _ref3$direction,
+        _ref3$reason = _ref3.reason,
+        reason = _ref3$reason === void 0 ? 'auto' : _ref3$reason;
+
+    if (!popupOpen) {
+      return;
+    }
+
+    var getNextIndex = function getNextIndex() {
+      var maxIndex = filteredOptions.length - 1;
+
+      if (diff === 'reset') {
+        return defaultHighlighted;
+      }
+
+      if (diff === 'start') {
+        return 0;
+      }
+
+      if (diff === 'end') {
+        return maxIndex;
+      }
+
+      var newIndex = highlightedIndexRef.current + diff;
+
+      if (newIndex < 0) {
+        if (newIndex === -1 && includeInputInList) {
+          return -1;
+        }
+
+        if (disableListWrap && highlightedIndexRef.current !== -1 || Math.abs(diff) > 1) {
+          return 0;
+        }
+
+        return maxIndex;
+      }
+
+      if (newIndex > maxIndex) {
+        if (newIndex === maxIndex + 1 && includeInputInList) {
+          return -1;
+        }
+
+        if (disableListWrap || Math.abs(diff) > 1) {
+          return maxIndex;
+        }
+
+        return 0;
+      }
+
+      return newIndex;
+    };
+
+    var nextIndex = validOptionIndex(getNextIndex(), direction);
+    setHighlightedIndex({
+      index: nextIndex,
+      reason: reason,
+      event: event
+    }); // Sync the content of the input with the highlighted option.
+
+    if (autoComplete && diff !== 'reset') {
+      if (nextIndex === -1) {
+        inputRef.current.value = inputValue;
+      } else {
+        var option = getOptionLabel(filteredOptions[nextIndex]);
+        inputRef.current.value = option; // The portion of the selected suggestion that has not been typed by the user,
+        // a completion string, appears inline after the input cursor in the textbox.
+
+        var index = option.toLowerCase().indexOf(inputValue.toLowerCase());
+
+        if (index === 0 && inputValue.length > 0) {
+          inputRef.current.setSelectionRange(inputValue.length, option.length);
+        }
+      }
+    }
+  });
+  var syncHighlightedIndex = React__namespace.useCallback(function () {
+    if (!popupOpen) {
+      return;
+    }
+
+    var valueItem = multiple ? value[0] : value; // The popup is empty, reset
+
+    if (filteredOptions.length === 0 || valueItem == null) {
+      changeHighlightedIndex({
+        diff: 'reset'
+      });
+      return;
+    }
+
+    if (!listboxRef.current) {
+      return;
+    } // Synchronize the value with the highlighted index
+
+
+    if (!filterSelectedOptions && valueItem != null) {
+      var currentOption = filteredOptions[highlightedIndexRef.current]; // Keep the current highlighted index if possible
+
+      if (multiple && currentOption && findIndex$1(value, function (val) {
+        return getOptionSelected(currentOption, val);
+      }) !== -1) {
+        return;
+      }
+
+      var itemIndex = findIndex$1(filteredOptions, function (optionItem) {
+        return getOptionSelected(optionItem, valueItem);
+      });
+
+      if (itemIndex === -1) {
+        changeHighlightedIndex({
+          diff: 'reset'
+        });
+      } else {
+        setHighlightedIndex({
+          index: itemIndex
+        });
+      }
+
+      return;
+    } // Prevent the highlighted index to leak outside the boundaries.
+
+
+    if (highlightedIndexRef.current >= filteredOptions.length - 1) {
+      setHighlightedIndex({
+        index: filteredOptions.length - 1
+      });
+      return;
+    } // Restore the focus to the previous index.
+
+
+    setHighlightedIndex({
+      index: highlightedIndexRef.current
+    }); // Ignore filteredOptions (and options, getOptionSelected, getOptionLabel) not to break the scroll position
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [// Only sync the highlighted index when the option switch between empty and not
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  filteredOptions.length === 0, // Don't sync the highlighted index with the value when multiple
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  multiple ? false : value, filterSelectedOptions, changeHighlightedIndex, setHighlightedIndex, popupOpen, inputValue, multiple]);
+  var handleListboxRef = require$$0.useEventCallback(function (node) {
+    require$$0.setRef(listboxRef, node);
+
+    if (!node) {
+      return;
+    }
+
+    syncHighlightedIndex();
+  });
+  React__namespace.useEffect(function () {
+    syncHighlightedIndex();
+  }, [syncHighlightedIndex]);
+
+  var handleOpen = function handleOpen(event) {
+    if (open) {
+      return;
+    }
+
+    setOpenState(true);
+
+    if (onOpen) {
+      onOpen(event);
+    }
+  };
+
+  var handleClose = function handleClose(event, reason) {
+    if (!open) {
+      return;
+    }
+
+    setOpenState(false);
+
+    if (onClose) {
+      onClose(event, reason);
+    }
+  };
+
+  var handleValue = function handleValue(event, newValue, reason, details) {
+    if (value === newValue) {
+      return;
+    }
+
+    if (onChange) {
+      onChange(event, newValue, reason, details);
+    }
+
+    setValue(newValue);
+  };
+
+  var isTouch = React__namespace.useRef(false);
+
+  var selectNewValue = function selectNewValue(event, option) {
+    var reasonProp = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'select-option';
+    var origin = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'options';
+    var reason = reasonProp;
+    var newValue = option;
+
+    if (multiple) {
+      newValue = Array.isArray(value) ? value.slice() : [];
+
+      if (process.env.NODE_ENV !== 'production') {
+        var matches = newValue.filter(function (val) {
+          return getOptionSelected(option, val);
+        });
+
+        if (matches.length > 1) {
+          console.error(["Material-UI: The `getOptionSelected` method of ".concat(componentName, " do not handle the arguments correctly."), "The component expects a single value to match a given option but found ".concat(matches.length, " matches.")].join('\n'));
+        }
+      }
+
+      var itemIndex = findIndex$1(newValue, function (valueItem) {
+        return getOptionSelected(option, valueItem);
+      });
+
+      if (itemIndex === -1) {
+        newValue.push(option);
+      } else if (origin !== 'freeSolo') {
+        newValue.splice(itemIndex, 1);
+        reason = 'remove-option';
+      }
+    }
+
+    resetInputValue(event, newValue);
+    handleValue(event, newValue, reason, {
+      option: option
+    });
+
+    if (!disableCloseOnSelect) {
+      handleClose(event, reason);
+    }
+
+    if (blurOnSelect === true || blurOnSelect === 'touch' && isTouch.current || blurOnSelect === 'mouse' && !isTouch.current) {
+      inputRef.current.blur();
+    }
+  };
+
+  function validTagIndex(index, direction) {
+    if (index === -1) {
+      return -1;
+    }
+
+    var nextFocus = index;
+
+    while (true) {
+      // Out of range
+      if (direction === 'next' && nextFocus === value.length || direction === 'previous' && nextFocus === -1) {
+        return -1;
+      }
+
+      var option = anchorEl.querySelector("[data-tag-index=\"".concat(nextFocus, "\"]")); // Same logic as MenuList.js
+
+      if (option && (!option.hasAttribute('tabindex') || option.disabled || option.getAttribute('aria-disabled') === 'true')) {
+        nextFocus += direction === 'next' ? 1 : -1;
+      } else {
+        return nextFocus;
+      }
+    }
+  }
+
+  var handleFocusTag = function handleFocusTag(event, direction) {
+    if (!multiple) {
+      return;
+    }
+
+    handleClose(event, 'toggleInput');
+    var nextTag = focusedTag;
+
+    if (focusedTag === -1) {
+      if (inputValue === '' && direction === 'previous') {
+        nextTag = value.length - 1;
+      }
+    } else {
+      nextTag += direction === 'next' ? 1 : -1;
+
+      if (nextTag < 0) {
+        nextTag = 0;
+      }
+
+      if (nextTag === value.length) {
+        nextTag = -1;
+      }
+    }
+
+    nextTag = validTagIndex(nextTag, direction);
+    setFocusedTag(nextTag);
+    focusTag(nextTag);
+  };
+
+  var handleClear = function handleClear(event) {
+    ignoreFocus.current = true;
+    setInputValue('');
+
+    if (onInputChange) {
+      onInputChange(event, '', 'clear');
+    }
+
+    handleValue(event, multiple ? [] : null, 'clear');
+  };
+
+  var handleKeyDown = function handleKeyDown(other) {
+    return function (event) {
+      if (focusedTag !== -1 && ['ArrowLeft', 'ArrowRight'].indexOf(event.key) === -1) {
+        setFocusedTag(-1);
+        focusTag(-1);
+      }
+
+      switch (event.key) {
+        case 'Home':
+          if (popupOpen && handleHomeEndKeys) {
+            // Prevent scroll of the page
+            event.preventDefault();
+            changeHighlightedIndex({
+              diff: 'start',
+              direction: 'next',
+              reason: 'keyboard',
+              event: event
+            });
+          }
+
+          break;
+
+        case 'End':
+          if (popupOpen && handleHomeEndKeys) {
+            // Prevent scroll of the page
+            event.preventDefault();
+            changeHighlightedIndex({
+              diff: 'end',
+              direction: 'previous',
+              reason: 'keyboard',
+              event: event
+            });
+          }
+
+          break;
+
+        case 'PageUp':
+          // Prevent scroll of the page
+          event.preventDefault();
+          changeHighlightedIndex({
+            diff: -pageSize,
+            direction: 'previous',
+            reason: 'keyboard',
+            event: event
+          });
+          handleOpen(event);
+          break;
+
+        case 'PageDown':
+          // Prevent scroll of the page
+          event.preventDefault();
+          changeHighlightedIndex({
+            diff: pageSize,
+            direction: 'next',
+            reason: 'keyboard',
+            event: event
+          });
+          handleOpen(event);
+          break;
+
+        case 'ArrowDown':
+          // Prevent cursor move
+          event.preventDefault();
+          changeHighlightedIndex({
+            diff: 1,
+            direction: 'next',
+            reason: 'keyboard',
+            event: event
+          });
+          handleOpen(event);
+          break;
+
+        case 'ArrowUp':
+          // Prevent cursor move
+          event.preventDefault();
+          changeHighlightedIndex({
+            diff: -1,
+            direction: 'previous',
+            reason: 'keyboard',
+            event: event
+          });
+          handleOpen(event);
+          break;
+
+        case 'ArrowLeft':
+          handleFocusTag(event, 'previous');
+          break;
+
+        case 'ArrowRight':
+          handleFocusTag(event, 'next');
+          break;
+
+        case 'Enter':
+          // Wait until IME is settled.
+          if (event.which === 229) {
+            break;
+          }
+
+          if (highlightedIndexRef.current !== -1 && popupOpen) {
+            var option = filteredOptions[highlightedIndexRef.current];
+            var disabled = getOptionDisabled ? getOptionDisabled(option) : false; // We don't want to validate the form.
+
+            event.preventDefault();
+
+            if (disabled) {
+              return;
+            }
+
+            selectNewValue(event, option, 'select-option'); // Move the selection to the end.
+
+            if (autoComplete) {
+              inputRef.current.setSelectionRange(inputRef.current.value.length, inputRef.current.value.length);
+            }
+          } else if (freeSolo && inputValue !== '' && inputValueIsSelectedValue === false) {
+            if (multiple) {
+              // Allow people to add new values before they submit the form.
+              event.preventDefault();
+            }
+
+            selectNewValue(event, inputValue, 'create-option', 'freeSolo');
+          }
+
+          break;
+
+        case 'Escape':
+          if (popupOpen) {
+            // Avoid Opera to exit fullscreen mode.
+            event.preventDefault(); // Avoid the Modal to handle the event.
+
+            event.stopPropagation();
+            handleClose(event, 'escape');
+          } else if (clearOnEscape && (inputValue !== '' || multiple && value.length > 0)) {
+            // Avoid Opera to exit fullscreen mode.
+            event.preventDefault(); // Avoid the Modal to handle the event.
+
+            event.stopPropagation();
+            handleClear(event);
+          }
+
+          break;
+
+        case 'Backspace':
+          if (multiple && inputValue === '' && value.length > 0) {
+            var index = focusedTag === -1 ? value.length - 1 : focusedTag;
+            var newValue = value.slice();
+            newValue.splice(index, 1);
+            handleValue(event, newValue, 'remove-option', {
+              option: value[index]
+            });
+          }
+
+          break;
+      }
+
+      if (other.onKeyDown) {
+        other.onKeyDown(event);
+      }
+    };
+  };
+
+  var handleFocus = function handleFocus(event) {
+    setFocused(true);
+
+    if (openOnFocus && !ignoreFocus.current) {
+      handleOpen(event);
+    }
+  };
+
+  var handleBlur = function handleBlur(event) {
+    // Ignore the event when using the scrollbar with IE 11
+    if (listboxRef.current !== null && document.activeElement === listboxRef.current.parentElement) {
+      inputRef.current.focus();
+      return;
+    }
+
+    setFocused(false);
+    firstFocus.current = true;
+    ignoreFocus.current = false;
+
+    if (debug && inputValue !== '') {
+      return;
+    }
+
+    if (autoSelect && highlightedIndexRef.current !== -1 && popupOpen) {
+      selectNewValue(event, filteredOptions[highlightedIndexRef.current], 'blur');
+    } else if (autoSelect && freeSolo && inputValue !== '') {
+      selectNewValue(event, inputValue, 'blur', 'freeSolo');
+    } else if (clearOnBlur) {
+      resetInputValue(event, value);
+    }
+
+    handleClose(event, 'blur');
+  };
+
+  var handleInputChange = function handleInputChange(event) {
+    var newValue = event.target.value;
+
+    if (inputValue !== newValue) {
+      setInputValue(newValue);
+
+      if (onInputChange) {
+        onInputChange(event, newValue, 'input');
+      }
+    }
+
+    if (newValue === '') {
+      if (!disableClearable && !multiple) {
+        handleValue(event, null, 'clear');
+      }
+    } else {
+      handleOpen(event);
+    }
+  };
+
+  var handleOptionMouseOver = function handleOptionMouseOver(event) {
+    setHighlightedIndex({
+      event: event,
+      index: Number(event.currentTarget.getAttribute('data-option-index')),
+      reason: 'mouse'
+    });
+  };
+
+  var handleOptionTouchStart = function handleOptionTouchStart() {
+    isTouch.current = true;
+  };
+
+  var handleOptionClick = function handleOptionClick(event) {
+    var index = Number(event.currentTarget.getAttribute('data-option-index'));
+    selectNewValue(event, filteredOptions[index], 'select-option');
+    isTouch.current = false;
+  };
+
+  var handleTagDelete = function handleTagDelete(index) {
+    return function (event) {
+      var newValue = value.slice();
+      newValue.splice(index, 1);
+      handleValue(event, newValue, 'remove-option', {
+        option: value[index]
+      });
+    };
+  };
+
+  var handlePopupIndicator = function handlePopupIndicator(event) {
+    if (open) {
+      handleClose(event, 'toggleInput');
+    } else {
+      handleOpen(event);
+    }
+  }; // Prevent input blur when interacting with the combobox
+
+
+  var handleMouseDown = function handleMouseDown(event) {
+    if (event.target.getAttribute('id') !== id) {
+      event.preventDefault();
+    }
+  }; // Focus the input when interacting with the combobox
+
+
+  var handleClick = function handleClick() {
+    inputRef.current.focus();
+
+    if (selectOnFocus && firstFocus.current && inputRef.current.selectionEnd - inputRef.current.selectionStart === 0) {
+      inputRef.current.select();
+    }
+
+    firstFocus.current = false;
+  };
+
+  var handleInputMouseDown = function handleInputMouseDown(event) {
+    if (inputValue === '' || !open) {
+      handlePopupIndicator(event);
+    }
+  };
+
+  var dirty = freeSolo && inputValue.length > 0;
+  dirty = dirty || (multiple ? value.length > 0 : value !== null);
+  var groupedOptions = filteredOptions;
+
+  if (groupBy) {
+    // used to keep track of key and indexes in the result array
+    var indexBy = new Map();
+    var warn = false;
+    groupedOptions = filteredOptions.reduce(function (acc, option, index) {
+      var group = groupBy(option);
+
+      if (acc.length > 0 && acc[acc.length - 1].group === group) {
+        acc[acc.length - 1].options.push(option);
+      } else {
+        if (process.env.NODE_ENV !== 'production') {
+          if (indexBy.get(group) && !warn) {
+            console.warn("Material-UI: The options provided combined with the `groupBy` method of ".concat(componentName, " returns duplicated headers."), 'You can solve the issue by sorting the options with the output of `groupBy`.');
+            warn = true;
+          }
+
+          indexBy.set(group, true);
+        }
+
+        acc.push({
+          key: index,
+          index: index,
+          group: group,
+          options: [option]
+        });
+      }
+
+      return acc;
+    }, []);
+  }
+
+  return {
+    getRootProps: function getRootProps() {
+      var other = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return _extends$5({
+        'aria-owns': popupOpen ? "".concat(id, "-popup") : null,
+        role: 'combobox',
+        'aria-expanded': popupOpen
+      }, other, {
+        onKeyDown: handleKeyDown(other),
+        onMouseDown: handleMouseDown,
+        onClick: handleClick
+      });
+    },
+    getInputLabelProps: function getInputLabelProps() {
+      return {
+        id: "".concat(id, "-label"),
+        htmlFor: id
+      };
+    },
+    getInputProps: function getInputProps() {
+      return {
+        id: id,
+        value: inputValue,
+        onBlur: handleBlur,
+        onFocus: handleFocus,
+        onChange: handleInputChange,
+        onMouseDown: handleInputMouseDown,
+        // if open then this is handled imperativeley so don't let react override
+        // only have an opinion about this when closed
+        'aria-activedescendant': popupOpen ? '' : null,
+        'aria-autocomplete': autoComplete ? 'both' : 'list',
+        'aria-controls': popupOpen ? "".concat(id, "-popup") : null,
+        // Disable browser's suggestion that might overlap with the popup.
+        // Handle autocomplete but not autofill.
+        autoComplete: 'off',
+        ref: inputRef,
+        autoCapitalize: 'none',
+        spellCheck: 'false'
+      };
+    },
+    getClearProps: function getClearProps() {
+      return {
+        tabIndex: -1,
+        onClick: handleClear
+      };
+    },
+    getPopupIndicatorProps: function getPopupIndicatorProps() {
+      return {
+        tabIndex: -1,
+        onClick: handlePopupIndicator
+      };
+    },
+    getTagProps: function getTagProps(_ref4) {
+      var index = _ref4.index;
+      return {
+        key: index,
+        'data-tag-index': index,
+        tabIndex: -1,
+        onDelete: handleTagDelete(index)
+      };
+    },
+    getListboxProps: function getListboxProps() {
+      return {
+        role: 'listbox',
+        id: "".concat(id, "-popup"),
+        'aria-labelledby': "".concat(id, "-label"),
+        ref: handleListboxRef,
+        onMouseDown: function onMouseDown(event) {
+          // Prevent blur
+          event.preventDefault();
+        }
+      };
+    },
+    getOptionProps: function getOptionProps(_ref5) {
+      var index = _ref5.index,
+          option = _ref5.option;
+      var selected = (multiple ? value : [value]).some(function (value2) {
+        return value2 != null && getOptionSelected(option, value2);
+      });
+      var disabled = getOptionDisabled ? getOptionDisabled(option) : false;
+      return {
+        key: index,
+        tabIndex: -1,
+        role: 'option',
+        id: "".concat(id, "-option-").concat(index),
+        onMouseOver: handleOptionMouseOver,
+        onClick: handleOptionClick,
+        onTouchStart: handleOptionTouchStart,
+        'data-option-index': index,
+        'aria-disabled': disabled,
+        'aria-selected': selected
+      };
+    },
+    id: id,
+    inputValue: inputValue,
+    value: value,
+    dirty: dirty,
+    popupOpen: popupOpen,
+    focused: focused || focusedTag !== -1,
+    anchorEl: anchorEl,
+    setAnchorEl: setAnchorEl,
+    focusedTag: focusedTag,
+    groupedOptions: groupedOptions
+  };
+}
+
+var styles = function styles(theme) {
+  var _option;
+
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      '&$focused $clearIndicatorDirty': {
+        visibility: 'visible'
+      },
+
+      /* Avoid double tap issue on iOS */
+      '@media (pointer: fine)': {
+        '&:hover $clearIndicatorDirty': {
+          visibility: 'visible'
+        }
+      }
+    },
+
+    /* Styles applied to the root element if `fullWidth={true}`. */
+    fullWidth: {
+      width: '100%'
+    },
+
+    /* Pseudo-class applied to the root element if focused. */
+    focused: {},
+
+    /* Styles applied to the tag elements, e.g. the chips. */
+    tag: {
+      margin: 3,
+      maxWidth: 'calc(100% - 6px)'
+    },
+
+    /* Styles applied to the tag elements, e.g. the chips if `size="small"`. */
+    tagSizeSmall: {
+      margin: 2,
+      maxWidth: 'calc(100% - 4px)'
+    },
+
+    /* Styles applied when the popup icon is rendered. */
+    hasPopupIcon: {},
+
+    /* Styles applied when the clear icon is rendered. */
+    hasClearIcon: {},
+
+    /* Styles applied to the Input element. */
+    inputRoot: {
+      flexWrap: 'wrap',
+      '$hasPopupIcon &, $hasClearIcon &': {
+        paddingRight: 26 + 4
+      },
+      '$hasPopupIcon$hasClearIcon &': {
+        paddingRight: 52 + 4
+      },
+      '& $input': {
+        width: 0,
+        minWidth: 30
+      },
+      '&[class*="MuiInput-root"]': {
+        paddingBottom: 1,
+        '& $input': {
+          padding: 4
+        },
+        '& $input:first-child': {
+          padding: '6px 0'
+        }
+      },
+      '&[class*="MuiInput-root"][class*="MuiInput-marginDense"]': {
+        '& $input': {
+          padding: '4px 4px 5px'
+        },
+        '& $input:first-child': {
+          padding: '3px 0 6px'
+        }
+      },
+      '&[class*="MuiOutlinedInput-root"]': {
+        padding: 9,
+        '$hasPopupIcon &, $hasClearIcon &': {
+          paddingRight: 26 + 4 + 9
+        },
+        '$hasPopupIcon$hasClearIcon &': {
+          paddingRight: 52 + 4 + 9
+        },
+        '& $input': {
+          padding: '9.5px 4px'
+        },
+        '& $input:first-child': {
+          paddingLeft: 6
+        },
+        '& $endAdornment': {
+          right: 9
+        }
+      },
+      '&[class*="MuiOutlinedInput-root"][class*="MuiOutlinedInput-marginDense"]': {
+        padding: 6,
+        '& $input': {
+          padding: '4.5px 4px'
+        }
+      },
+      '&[class*="MuiFilledInput-root"]': {
+        paddingTop: 19,
+        paddingLeft: 8,
+        '$hasPopupIcon &, $hasClearIcon &': {
+          paddingRight: 26 + 4 + 9
+        },
+        '$hasPopupIcon$hasClearIcon &': {
+          paddingRight: 52 + 4 + 9
+        },
+        '& $input': {
+          padding: '9px 4px'
+        },
+        '& $endAdornment': {
+          right: 9
+        }
+      },
+      '&[class*="MuiFilledInput-root"][class*="MuiFilledInput-marginDense"]': {
+        paddingBottom: 1,
+        '& $input': {
+          padding: '4.5px 4px'
+        }
+      }
+    },
+
+    /* Styles applied to the input element. */
+    input: {
+      flexGrow: 1,
+      textOverflow: 'ellipsis',
+      opacity: 0
+    },
+
+    /* Styles applied to the input element if tag focused. */
+    inputFocused: {
+      opacity: 1
+    },
+
+    /* Styles applied to the endAdornment element. */
+    endAdornment: {
+      // We use a position absolute to support wrapping tags.
+      position: 'absolute',
+      right: 0,
+      top: 'calc(50% - 14px)' // Center vertically
+
+    },
+
+    /* Styles applied to the clear indicator. */
+    clearIndicator: {
+      marginRight: -2,
+      padding: 4,
+      visibility: 'hidden'
+    },
+
+    /* Styles applied to the clear indicator if the input is dirty. */
+    clearIndicatorDirty: {},
+
+    /* Styles applied to the popup indicator. */
+    popupIndicator: {
+      padding: 2,
+      marginRight: -2
+    },
+
+    /* Styles applied to the popup indicator if the popup is open. */
+    popupIndicatorOpen: {
+      transform: 'rotate(180deg)'
+    },
+
+    /* Styles applied to the popper element. */
+    popper: {
+      zIndex: theme.zIndex.modal
+    },
+
+    /* Styles applied to the popper element if `disablePortal={true}`. */
+    popperDisablePortal: {
+      position: 'absolute'
+    },
+
+    /* Styles applied to the `Paper` component. */
+    paper: _extends$5({}, theme.typography.body1, {
+      overflow: 'hidden',
+      margin: '4px 0'
+    }),
+
+    /* Styles applied to the `listbox` component. */
+    listbox: {
+      listStyle: 'none',
+      margin: 0,
+      padding: '8px 0',
+      maxHeight: '40vh',
+      overflow: 'auto'
+    },
+
+    /* Styles applied to the loading wrapper. */
+    loading: {
+      color: theme.palette.text.secondary,
+      padding: '14px 16px'
+    },
+
+    /* Styles applied to the no option wrapper. */
+    noOptions: {
+      color: theme.palette.text.secondary,
+      padding: '14px 16px'
+    },
+
+    /* Styles applied to the option elements. */
+    option: (_option = {
+      minHeight: 48,
+      display: 'flex',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      cursor: 'pointer',
+      paddingTop: 6,
+      boxSizing: 'border-box',
+      outline: '0',
+      WebkitTapHighlightColor: 'transparent',
+      paddingBottom: 6,
+      paddingLeft: 16,
+      paddingRight: 16
+    }, _defineProperty(_option, theme.breakpoints.up('sm'), {
+      minHeight: 'auto'
+    }), _defineProperty(_option, '&[aria-selected="true"]', {
+      backgroundColor: theme.palette.action.selected
+    }), _defineProperty(_option, '&[data-focus="true"]', {
+      backgroundColor: theme.palette.action.hover
+    }), _defineProperty(_option, '&:active', {
+      backgroundColor: theme.palette.action.selected
+    }), _defineProperty(_option, '&[aria-disabled="true"]', {
+      opacity: theme.palette.action.disabledOpacity,
+      pointerEvents: 'none'
+    }), _option),
+
+    /* Styles applied to the group's label elements. */
+    groupLabel: {
+      backgroundColor: theme.palette.background.paper,
+      top: -8
+    },
+
+    /* Styles applied to the group's ul elements. */
+    groupUl: {
+      padding: 0,
+      '& $option': {
+        paddingLeft: 24
+      }
+    }
+  };
+};
+
+function DisablePortal(props) {
+  // eslint-disable-next-line react/prop-types
+  props.anchorEl;
+      props.open;
+      var other = _objectWithoutProperties$4(props, ["anchorEl", "open"]);
+
+  return /*#__PURE__*/React__namespace.createElement("div", other);
+}
+
+var _ref = /*#__PURE__*/React__namespace.createElement(CloseIcon, {
+  fontSize: "small"
+});
+
+var _ref2 = /*#__PURE__*/React__namespace.createElement(ArrowDropDownIcon, null);
+
+var Autocomplete = /*#__PURE__*/React__namespace.forwardRef(function Autocomplete(props, ref) {
+  /* eslint-disable no-unused-vars */
+  props.autoComplete;
+      props.autoHighlight;
+      props.autoSelect;
+      props.blurOnSelect;
+      var ChipProps = props.ChipProps,
+      classes = props.classes,
+      className = props.className,
+      _props$clearOnBlur = props.clearOnBlur;
+      _props$clearOnBlur === void 0 ? !props.freeSolo : _props$clearOnBlur;
+      props.clearOnEscape;
+      var _props$clearText = props.clearText,
+      clearText = _props$clearText === void 0 ? 'Clear' : _props$clearText,
+      _props$closeIcon = props.closeIcon,
+      closeIcon = _props$closeIcon === void 0 ? _ref : _props$closeIcon,
+      _props$closeText = props.closeText,
+      closeText = _props$closeText === void 0 ? 'Close' : _props$closeText;
+      props.debug;
+      var _props$defaultValue = props.defaultValue;
+      _props$defaultValue === void 0 ? props.multiple ? [] : null : _props$defaultValue;
+      var _props$disableClearab = props.disableClearable,
+      disableClearable = _props$disableClearab === void 0 ? false : _props$disableClearab;
+      props.disableCloseOnSelect;
+      var _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled;
+      props.disabledItemsFocusable;
+      props.disableListWrap;
+      var _props$disablePortal = props.disablePortal,
+      disablePortal = _props$disablePortal === void 0 ? false : _props$disablePortal;
+      props.filterOptions;
+      props.filterSelectedOptions;
+      var _props$forcePopupIcon = props.forcePopupIcon,
+      forcePopupIcon = _props$forcePopupIcon === void 0 ? 'auto' : _props$forcePopupIcon,
+      _props$freeSolo = props.freeSolo,
+      freeSolo = _props$freeSolo === void 0 ? false : _props$freeSolo,
+      _props$fullWidth = props.fullWidth,
+      fullWidth = _props$fullWidth === void 0 ? false : _props$fullWidth,
+      _props$getLimitTagsTe = props.getLimitTagsText,
+      getLimitTagsText = _props$getLimitTagsTe === void 0 ? function (more) {
+    return "+".concat(more);
+  } : _props$getLimitTagsTe;
+      props.getOptionDisabled;
+      var _props$getOptionLabel = props.getOptionLabel,
+      getOptionLabel = _props$getOptionLabel === void 0 ? function (x) {
+    return x;
+  } : _props$getOptionLabel;
+      props.getOptionSelected;
+      var groupBy = props.groupBy,
+      _props$handleHomeEndK = props.handleHomeEndKeys;
+      _props$handleHomeEndK === void 0 ? !props.freeSolo : _props$handleHomeEndK;
+      props.id;
+      props.includeInputInList;
+      props.inputValue;
+      var _props$limitTags = props.limitTags,
+      limitTags = _props$limitTags === void 0 ? -1 : _props$limitTags,
+      _props$ListboxCompone = props.ListboxComponent,
+      ListboxComponent = _props$ListboxCompone === void 0 ? 'ul' : _props$ListboxCompone,
+      ListboxProps = props.ListboxProps,
+      _props$loading = props.loading,
+      loading = _props$loading === void 0 ? false : _props$loading,
+      _props$loadingText = props.loadingText,
+      loadingText = _props$loadingText === void 0 ? 'Loading…' : _props$loadingText,
+      _props$multiple = props.multiple,
+      multiple = _props$multiple === void 0 ? false : _props$multiple,
+      _props$noOptionsText = props.noOptionsText,
+      noOptionsText = _props$noOptionsText === void 0 ? 'No options' : _props$noOptionsText;
+      props.onChange;
+      props.onClose;
+      props.onHighlightChange;
+      props.onInputChange;
+      props.onOpen;
+      props.open;
+      props.openOnFocus;
+      var _props$openText = props.openText,
+      openText = _props$openText === void 0 ? 'Open' : _props$openText;
+      props.options;
+      var _props$PaperComponent = props.PaperComponent,
+      PaperComponent = _props$PaperComponent === void 0 ? Paper__default['default'] : _props$PaperComponent,
+      _props$PopperComponen = props.PopperComponent,
+      PopperComponentProp = _props$PopperComponen === void 0 ? Popper__default['default'] : _props$PopperComponen,
+      _props$popupIcon = props.popupIcon,
+      popupIcon = _props$popupIcon === void 0 ? _ref2 : _props$popupIcon,
+      renderGroupProp = props.renderGroup,
+      renderInput = props.renderInput,
+      renderOptionProp = props.renderOption,
+      renderTags = props.renderTags,
+      _props$selectOnFocus = props.selectOnFocus;
+      _props$selectOnFocus === void 0 ? !props.freeSolo : _props$selectOnFocus;
+      var _props$size = props.size,
+      size = _props$size === void 0 ? 'medium' : _props$size;
+      props.value;
+      var other = _objectWithoutProperties$4(props, ["autoComplete", "autoHighlight", "autoSelect", "blurOnSelect", "ChipProps", "classes", "className", "clearOnBlur", "clearOnEscape", "clearText", "closeIcon", "closeText", "debug", "defaultValue", "disableClearable", "disableCloseOnSelect", "disabled", "disabledItemsFocusable", "disableListWrap", "disablePortal", "filterOptions", "filterSelectedOptions", "forcePopupIcon", "freeSolo", "fullWidth", "getLimitTagsText", "getOptionDisabled", "getOptionLabel", "getOptionSelected", "groupBy", "handleHomeEndKeys", "id", "includeInputInList", "inputValue", "limitTags", "ListboxComponent", "ListboxProps", "loading", "loadingText", "multiple", "noOptionsText", "onChange", "onClose", "onHighlightChange", "onInputChange", "onOpen", "open", "openOnFocus", "openText", "options", "PaperComponent", "PopperComponent", "popupIcon", "renderGroup", "renderInput", "renderOption", "renderTags", "selectOnFocus", "size", "value"]);
+  /* eslint-enable no-unused-vars */
+
+
+  var PopperComponent = disablePortal ? DisablePortal : PopperComponentProp;
+
+  var _useAutocomplete = useAutocomplete(_extends$5({}, props, {
+    componentName: 'Autocomplete'
+  })),
+      getRootProps = _useAutocomplete.getRootProps,
+      getInputProps = _useAutocomplete.getInputProps,
+      getInputLabelProps = _useAutocomplete.getInputLabelProps,
+      getPopupIndicatorProps = _useAutocomplete.getPopupIndicatorProps,
+      getClearProps = _useAutocomplete.getClearProps,
+      getTagProps = _useAutocomplete.getTagProps,
+      getListboxProps = _useAutocomplete.getListboxProps,
+      getOptionProps = _useAutocomplete.getOptionProps,
+      value = _useAutocomplete.value,
+      dirty = _useAutocomplete.dirty,
+      id = _useAutocomplete.id,
+      popupOpen = _useAutocomplete.popupOpen,
+      focused = _useAutocomplete.focused,
+      focusedTag = _useAutocomplete.focusedTag,
+      anchorEl = _useAutocomplete.anchorEl,
+      setAnchorEl = _useAutocomplete.setAnchorEl,
+      inputValue = _useAutocomplete.inputValue,
+      groupedOptions = _useAutocomplete.groupedOptions;
+
+  var startAdornment;
+
+  if (multiple && value.length > 0) {
+    var getCustomizedTagProps = function getCustomizedTagProps(params) {
+      return _extends$5({
+        className: clsx(classes.tag, size === 'small' && classes.tagSizeSmall),
+        disabled: disabled
+      }, getTagProps(params));
+    };
+
+    if (renderTags) {
+      startAdornment = renderTags(value, getCustomizedTagProps);
+    } else {
+      startAdornment = value.map(function (option, index) {
+        return /*#__PURE__*/React__namespace.createElement(Chip__default['default'], _extends$5({
+          label: getOptionLabel(option),
+          size: size
+        }, getCustomizedTagProps({
+          index: index
+        }), ChipProps));
+      });
+    }
+  }
+
+  if (limitTags > -1 && Array.isArray(startAdornment)) {
+    var more = startAdornment.length - limitTags;
+
+    if (!focused && more > 0) {
+      startAdornment = startAdornment.splice(0, limitTags);
+      startAdornment.push( /*#__PURE__*/React__namespace.createElement("span", {
+        className: classes.tag,
+        key: startAdornment.length
+      }, getLimitTagsText(more)));
+    }
+  }
+
+  var defaultRenderGroup = function defaultRenderGroup(params) {
+    return /*#__PURE__*/React__namespace.createElement("li", {
+      key: params.key
+    }, /*#__PURE__*/React__namespace.createElement(ListSubheader__default['default'], {
+      className: classes.groupLabel,
+      component: "div"
+    }, params.group), /*#__PURE__*/React__namespace.createElement("ul", {
+      className: classes.groupUl
+    }, params.children));
+  };
+
+  var renderGroup = renderGroupProp || defaultRenderGroup;
+  var renderOption = renderOptionProp || getOptionLabel;
+
+  var renderListOption = function renderListOption(option, index) {
+    var optionProps = getOptionProps({
+      option: option,
+      index: index
+    });
+    return /*#__PURE__*/React__namespace.createElement("li", _extends$5({}, optionProps, {
+      className: classes.option
+    }), renderOption(option, {
+      selected: optionProps['aria-selected'],
+      inputValue: inputValue
+    }));
+  };
+
+  var hasClearIcon = !disableClearable && !disabled;
+  var hasPopupIcon = (!freeSolo || forcePopupIcon === true) && forcePopupIcon !== false;
+  return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, /*#__PURE__*/React__namespace.createElement("div", _extends$5({
+    ref: ref,
+    className: clsx(classes.root, className, focused && classes.focused, fullWidth && classes.fullWidth, hasClearIcon && classes.hasClearIcon, hasPopupIcon && classes.hasPopupIcon)
+  }, getRootProps(other)), renderInput({
+    id: id,
+    disabled: disabled,
+    fullWidth: true,
+    size: size === 'small' ? 'small' : undefined,
+    InputLabelProps: getInputLabelProps(),
+    InputProps: {
+      ref: setAnchorEl,
+      className: classes.inputRoot,
+      startAdornment: startAdornment,
+      endAdornment: /*#__PURE__*/React__namespace.createElement("div", {
+        className: classes.endAdornment
+      }, hasClearIcon ? /*#__PURE__*/React__namespace.createElement(IconButton__default['default'], _extends$5({}, getClearProps(), {
+        "aria-label": clearText,
+        title: clearText,
+        className: clsx(classes.clearIndicator, dirty && classes.clearIndicatorDirty)
+      }), closeIcon) : null, hasPopupIcon ? /*#__PURE__*/React__namespace.createElement(IconButton__default['default'], _extends$5({}, getPopupIndicatorProps(), {
+        disabled: disabled,
+        "aria-label": popupOpen ? closeText : openText,
+        title: popupOpen ? closeText : openText,
+        className: clsx(classes.popupIndicator, popupOpen && classes.popupIndicatorOpen)
+      }), popupIcon) : null)
+    },
+    inputProps: _extends$5({
+      className: clsx(classes.input, focusedTag === -1 && classes.inputFocused),
+      disabled: disabled
+    }, getInputProps())
+  })), popupOpen && anchorEl ? /*#__PURE__*/React__namespace.createElement(PopperComponent, {
+    className: clsx(classes.popper, disablePortal && classes.popperDisablePortal),
+    style: {
+      width: anchorEl ? anchorEl.clientWidth : null
+    },
+    role: "presentation",
+    anchorEl: anchorEl,
+    open: true
+  }, /*#__PURE__*/React__namespace.createElement(PaperComponent, {
+    className: classes.paper
+  }, loading && groupedOptions.length === 0 ? /*#__PURE__*/React__namespace.createElement("div", {
+    className: classes.loading
+  }, loadingText) : null, groupedOptions.length === 0 && !freeSolo && !loading ? /*#__PURE__*/React__namespace.createElement("div", {
+    className: classes.noOptions
+  }, noOptionsText) : null, groupedOptions.length > 0 ? /*#__PURE__*/React__namespace.createElement(ListboxComponent, _extends$5({
+    className: classes.listbox
+  }, getListboxProps(), ListboxProps), groupedOptions.map(function (option, index) {
+    if (groupBy) {
+      return renderGroup({
+        key: option.key,
+        group: option.group,
+        children: option.options.map(function (option2, index2) {
+          return renderListOption(option2, option.index + index2);
+        })
+      });
+    }
+
+    return renderListOption(option, index);
+  })) : null)) : null);
+});
+process.env.NODE_ENV !== "production" ? Autocomplete.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * If `true`, the portion of the selected suggestion that has not been typed by the user,
+   * known as the completion string, appears inline after the input cursor in the textbox.
+   * The inline completion string is visually highlighted and has a selected state.
+   */
+  autoComplete: PropTypes.bool,
+
+  /**
+   * If `true`, the first option is automatically highlighted.
+   */
+  autoHighlight: PropTypes.bool,
+
+  /**
+   * If `true`, the selected option becomes the value of the input
+   * when the Autocomplete loses focus unless the user chooses
+   * a different option or changes the character string in the input.
+   */
+  autoSelect: PropTypes.bool,
+
+  /**
+   * Control if the input should be blurred when an option is selected:
+   *
+   * - `false` the input is not blurred.
+   * - `true` the input is always blurred.
+   * - `touch` the input is blurred after a touch event.
+   * - `mouse` the input is blurred after a mouse event.
+   */
+  blurOnSelect: PropTypes.oneOfType([PropTypes.oneOf(['mouse', 'touch']), PropTypes.bool]),
+
+  /**
+   * Props applied to the [`Chip`](/api/chip/) element.
+   */
+  ChipProps: PropTypes.object,
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: PropTypes.object,
+
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
+
+  /**
+   * If `true`, the input's text will be cleared on blur if no value is selected.
+   *
+   * Set to `true` if you want to help the user enter a new value.
+   * Set to `false` if you want to help the user resume his search.
+   */
+  clearOnBlur: PropTypes.bool,
+
+  /**
+   * If `true`, clear all values when the user presses escape and the popup is closed.
+   */
+  clearOnEscape: PropTypes.bool,
+
+  /**
+   * Override the default text for the *clear* icon button.
+   *
+   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   */
+  clearText: PropTypes.string,
+
+  /**
+   * The icon to display in place of the default close icon.
+   */
+  closeIcon: PropTypes.node,
+
+  /**
+   * Override the default text for the *close popup* icon button.
+   *
+   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   */
+  closeText: PropTypes.string,
+
+  /**
+   * If `true`, the popup will ignore the blur event if the input is filled.
+   * You can inspect the popup markup with your browser tools.
+   * Consider this option when you need to customize the component.
+   */
+  debug: PropTypes.bool,
+
+  /**
+   * The default input value. Use when the component is not controlled.
+   */
+  defaultValue: PropTypes.any,
+
+  /**
+   * If `true`, the input can't be cleared.
+   */
+  disableClearable: PropTypes
+  /* @typescript-to-proptypes-ignore */
+  .bool,
+
+  /**
+   * If `true`, the popup won't close when a value is selected.
+   */
+  disableCloseOnSelect: PropTypes.bool,
+
+  /**
+   * If `true`, the input will be disabled.
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * If `true`, will allow focus on disabled items.
+   */
+  disabledItemsFocusable: PropTypes.bool,
+
+  /**
+   * If `true`, the list box in the popup will not wrap focus.
+   */
+  disableListWrap: PropTypes.bool,
+
+  /**
+   * Disable the portal behavior.
+   * The children stay within it's parent DOM hierarchy.
+   */
+  disablePortal: PropTypes.bool,
+
+  /**
+   * A filter function that determines the options that are eligible.
+   *
+   * @param {T[]} options The options to render.
+   * @param {object} state The state of the component.
+   * @returns {T[]}
+   */
+  filterOptions: PropTypes.func,
+
+  /**
+   * If `true`, hide the selected options from the list box.
+   */
+  filterSelectedOptions: PropTypes.bool,
+
+  /**
+   * Force the visibility display of the popup icon.
+   */
+  forcePopupIcon: PropTypes.oneOfType([PropTypes.oneOf(['auto']), PropTypes.bool]),
+
+  /**
+   * If `true`, the Autocomplete is free solo, meaning that the user input is not bound to provided options.
+   */
+  freeSolo: PropTypes
+  /* @typescript-to-proptypes-ignore */
+  .bool,
+
+  /**
+   * If `true`, the input will take up the full width of its container.
+   */
+  fullWidth: PropTypes.bool,
+
+  /**
+   * The label to display when the tags are truncated (`limitTags`).
+   *
+   * @param {number} more The number of truncated tags.
+   * @returns {ReactNode}
+   */
+  getLimitTagsText: PropTypes.func,
+
+  /**
+   * Used to determine the disabled state for a given option.
+   *
+   * @param {T} option The option to test.
+   * @returns {boolean}
+   */
+  getOptionDisabled: PropTypes.func,
+
+  /**
+   * Used to determine the string value for a given option.
+   * It's used to fill the input (and the list box options if `renderOption` is not provided).
+   *
+   * @param {T} option
+   * @returns {string}
+   */
+  getOptionLabel: PropTypes.func,
+
+  /**
+   * Used to determine if an option is selected, considering the current value.
+   * Uses strict equality by default.
+   *
+   * @param {T} option The option to test.
+   * @param {T} value The value to test against.
+   * @returns {boolean}
+   */
+  getOptionSelected: PropTypes.func,
+
+  /**
+   * If provided, the options will be grouped under the returned string.
+   * The groupBy value is also used as the text for group headings when `renderGroup` is not provided.
+   *
+   * @param {T} options The options to group.
+   * @returns {string}
+   */
+  groupBy: PropTypes.func,
+
+  /**
+   * If `true`, the component handles the "Home" and "End" keys when the popup is open.
+   * It should move focus to the first option and last option, respectively.
+   */
+  handleHomeEndKeys: PropTypes.bool,
+
+  /**
+   * This prop is used to help implement the accessibility logic.
+   * If you don't provide this prop. It falls back to a randomly generated id.
+   */
+  id: PropTypes.string,
+
+  /**
+   * If `true`, the highlight can move to the input.
+   */
+  includeInputInList: PropTypes.bool,
+
+  /**
+   * The input value.
+   */
+  inputValue: PropTypes.string,
+
+  /**
+   * The maximum number of tags that will be visible when not focused.
+   * Set `-1` to disable the limit.
+   */
+  limitTags: PropTypes.number,
+
+  /**
+   * The component used to render the listbox.
+   */
+  ListboxComponent: PropTypes.elementType,
+
+  /**
+   * Props applied to the Listbox element.
+   */
+  ListboxProps: PropTypes.object,
+
+  /**
+   * If `true`, the component is in a loading state.
+   */
+  loading: PropTypes.bool,
+
+  /**
+   * Text to display when in a loading state.
+   *
+   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   */
+  loadingText: PropTypes.node,
+
+  /**
+   * If `true`, `value` must be an array and the menu will support multiple selections.
+   */
+  multiple: PropTypes
+  /* @typescript-to-proptypes-ignore */
+  .bool,
+
+  /**
+   * Text to display when there are no options.
+   *
+   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   */
+  noOptionsText: PropTypes.node,
+
+  /**
+   * Callback fired when the value changes.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {T|T[]} value The new value of the component.
+   * @param {string} reason One of "create-option", "select-option", "remove-option", "blur" or "clear".
+   */
+  onChange: PropTypes.func,
+
+  /**
+   * Callback fired when the popup requests to be closed.
+   * Use in controlled mode (see open).
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"toggleInput"`, `"escape"`, `"select-option"`, `"blur"`.
+   */
+  onClose: PropTypes.func,
+
+  /**
+   * Callback fired when the highlight option changes.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {T} option The highlighted option.
+   * @param {string} reason Can be: `"keyboard"`, `"auto"`, `"mouse"`.
+   */
+  onHighlightChange: PropTypes.func,
+
+  /**
+   * Callback fired when the input value changes.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} value The new value of the text input.
+   * @param {string} reason Can be: `"input"` (user input), `"reset"` (programmatic change), `"clear"`.
+   */
+  onInputChange: PropTypes.func,
+
+  /**
+   * Callback fired when the popup requests to be opened.
+   * Use in controlled mode (see open).
+   *
+   * @param {object} event The event source of the callback.
+   */
+  onOpen: PropTypes.func,
+
+  /**
+   * Control the popup` open state.
+   */
+  open: PropTypes.bool,
+
+  /**
+   * If `true`, the popup will open on input focus.
+   */
+  openOnFocus: PropTypes.bool,
+
+  /**
+   * Override the default text for the *open popup* icon button.
+   *
+   * For localization purposes, you can use the provided [translations](/guides/localization/).
+   */
+  openText: PropTypes.string,
+
+  /**
+   * Array of options.
+   */
+  options: PropTypes.array.isRequired,
+
+  /**
+   * The component used to render the body of the popup.
+   */
+  PaperComponent: PropTypes.elementType,
+
+  /**
+   * The component used to position the popup.
+   */
+  PopperComponent: PropTypes.elementType,
+
+  /**
+   * The icon to display in place of the default popup icon.
+   */
+  popupIcon: PropTypes.node,
+
+  /**
+   * Render the group.
+   *
+   * @param {any} option The group to render.
+   * @returns {ReactNode}
+   */
+  renderGroup: PropTypes.func,
+
+  /**
+   * Render the input.
+   *
+   * @param {object} params
+   * @returns {ReactNode}
+   */
+  renderInput: PropTypes.func.isRequired,
+
+  /**
+   * Render the option, use `getOptionLabel` by default.
+   *
+   * @param {T} option The option to render.
+   * @param {object} state The state of the component.
+   * @returns {ReactNode}
+   */
+  renderOption: PropTypes.func,
+
+  /**
+   * Render the selected value.
+   *
+   * @param {T[]} value The `value` provided to the component.
+   * @param {function} getTagProps A tag props getter.
+   * @returns {ReactNode}
+   */
+  renderTags: PropTypes.func,
+
+  /**
+   * If `true`, the input's text will be selected on focus.
+   * It helps the user clear the selected value.
+   */
+  selectOnFocus: PropTypes.bool,
+
+  /**
+   * The size of the autocomplete.
+   */
+  size: PropTypes.oneOf(['medium', 'small']),
+
+  /**
+   * The value of the autocomplete.
+   *
+   * The value must have reference equality with the option in order to be selected.
+   * You can customize the equality behavior with the `getOptionSelected` prop.
+   */
+  value: PropTypes.any
+} : void 0;
+var Autocomplete$1 = styles$1.withStyles(styles, {
+  name: 'MuiAutocomplete'
+})(Autocomplete);
+
+var palette = createPalette__default['default']({
+    primary: {
+        main: "#5702BC"
+    },
+    secondary: {
+        main: "#ff3f1a"
+    },
+    success: {
+        main: "#02bc79"
+    },
+    info: {
+        main: "#2196f3"
+    },
+    warning: {
+        main: "#ffb920"
+    },
+    error: {
+        main: "#ff5047"
+    },
+    background: {
+        default: "#fbfbfb"
+    },
+    divider: "#eaeaea",
+    text: {
+        primary: "#1c0b33"
+    }
+});
+
+var customTheme = {
+    palette: palette,
+    transitions: transitions__default['default'],
+    typography: createTypography__default['default'](palette, {
+        fontFamily: "'Inter UI', Roboto",
+        allVariants: {
+            color: "#1c0b33"
+        },
+        body1: {
+            fontSize: 14
+        },
+        body2: {
+            fontSize: 12
+        }
+    }),
+    spacing: createSpacing__default['default'](8),
+    list: {
+        item: {
+            height: 33
+        }
+    },
+    btn: {
+        borderRadius: 8,
+        iconSize: 16
+    },
+    inputs: {
+        height: 40,
+        border: {
+            color: "#dfe1e5",
+            focus: "#aeb4be",
+            radius: 6
+        }
+    },
+    link: {
+        color: "#2182c3"
+    },
+    card: {
+        boxShadow: "0 2px 7px 0 rgba(0, 0, 0, 0.04)",
+        borderRadius: 9,
+        header: {
+            backgroundColor: "#f9f9fa",
+            size: {
+                big: 70,
+                medium: 60
+            }
+        }
+    }
+};
+
+var defaultPaper = {
+    boxShadow: "none",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: customTheme.inputs.border.color,
+    borderRadius: customTheme.inputs.border.radius,
+    background: customTheme.palette.background.paper
+};
+var paper = {
+    elevation1: __assign({}, defaultPaper),
+    elevation8: __assign({}, defaultPaper)
+};
+
+var useStyles$g = core.makeStyles({
+    root: {
+        width: "100%"
+    },
+    highlightedPart: {
+        fontWeight: 600
+    },
+    input: {
+        padding: "0px !important"
+    },
+    listbox: {
+        padding: 0
+    },
+    paper: paper
+});
+var splitOn = function (slicable) {
+    var indices = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        indices[_i - 1] = arguments[_i];
+    }
+    return __spreadArray([0], indices).map(function (position, index, array) { return slicable.slice(position, array[index + 1]); });
+};
+var AutocompleteInput = function (_a) {
+    var options = _a.options, placeholder = _a.placeholder, id = _a.id, onChange = _a.onChange, onSelect = _a.onSelect;
+    var classes = useStyles$g();
+    var _b = React$2.useState(""), inputValue = _b[0], setInputValue = _b[1];
+    var renderInput = function (params) { return (React__default['default'].createElement(core.TextField, __assign({}, params, { fullWidth: true, placeholder: placeholder }))); };
+    var renderOption = function (option) {
+        var position = option.label.toLowerCase().indexOf(inputValue.toLowerCase());
+        var result = splitOn(option.label, position, position + inputValue.length);
+        return (React__default['default'].createElement("div", null, result.map(function (part, index) {
+            if (index === 1) {
+                return React__default['default'].createElement("span", { key: String(index), className: classes.highlightedPart }, part);
+            }
+            else {
+                return React__default['default'].createElement("span", { key: String(index) }, part);
+            }
+        })));
+    };
+    var getOptionLabel = function (option) {
+        return option.label;
+    };
+    var handleInputChange = function (_, newInputValue) {
+        onChange(newInputValue);
+        setInputValue(newInputValue);
+    };
+    var handleChange = function (_, newValue) {
+        onSelect(newValue);
+        if (!newValue) {
+            setInputValue("");
+        }
+    };
+    return (React__default['default'].createElement(Autocomplete$1, __assign({ className: classes.root, classes: {
+            inputRoot: classes.input,
+            listbox: classes.listbox,
+            paper: classes.paper
+        }, autoSelect: true, options: options, onInputChange: handleInputChange, onChange: handleChange, renderInput: renderInput, renderOption: renderOption, getOptionLabel: getOptionLabel }, id)));
+};
+
+var dist = {exports: {}};
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+var validateFormat = process.env.NODE_ENV !== "production" ? function (format) {
+  if (format === undefined) {
+    throw new Error('invariant(...): Second argument must be a string.');
+  }
+} : function (format) {};
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments to provide
+ * information about what broke and what you were expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant will
+ * remain to ensure logic does not differ in production.
+ */
+
+function invariant$1(condition, format) {
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return String(args[argIndex++]);
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // Skip invariant's own stack frame.
+
+    throw error;
+  }
+}
+
+var invariant_1 = invariant$1;
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
+}
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+
+
+var emptyFunction$1 = function emptyFunction() {};
+
+emptyFunction$1.thatReturns = makeEmptyFunction;
+emptyFunction$1.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction$1.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction$1.thatReturnsNull = makeEmptyFunction(null);
+
+emptyFunction$1.thatReturnsThis = function () {
+  return this;
+};
+
+emptyFunction$1.thatReturnsArgument = function (arg) {
+  return arg;
+};
+
+var emptyFunction_1 = emptyFunction$1;
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+var emptyFunction = emptyFunction_1;
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+
+function printWarning(format) {
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  var argIndex = 0;
+  var message = 'Warning: ' + format.replace(/%s/g, function () {
+    return args[argIndex++];
+  });
+
+  if (typeof console !== 'undefined') {
+    console.error(message);
+  }
+
+  try {
+    // --- Welcome to debugging React ---
+    // This error was thrown as a convenience so that you can use this stack
+    // to find the callsite that caused this warning to fire.
+    throw new Error(message);
+  } catch (x) {}
+}
+
+var warning = process.env.NODE_ENV !== "production" ? function (condition, format) {
+  if (format === undefined) {
+    throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+  }
+
+  if (!condition) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+      args[_key2 - 2] = arguments[_key2];
+    }
+
+    printWarning.apply(void 0, [format].concat(args));
+  }
+} : emptyFunction;
+var warning_1 = warning;
 
 // istanbul ignore next
 var statusDiv = typeof document === 'undefined' ? null : document.getElementById('a11y-status-message');
@@ -1911,7 +4131,7 @@ var classCallCheck$1 = function (instance, Constructor) {
   }
 };
 
-var _extends$5 = Object.assign || function (target) {
+var _extends$4 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -2068,7 +4288,7 @@ var Downshift = function (_Component) {
     if (this.getState().isOpen) {
       this.changeHighlightedIndex(amount, otherStateToSet);
     } else {
-      this.setHighlightedIndex(undefined, _extends$5({ isOpen: true }, otherStateToSet));
+      this.setHighlightedIndex(undefined, _extends$4({ isOpen: true }, otherStateToSet));
     }
   };
 
@@ -2387,7 +4607,7 @@ var _initialiseProps = function () {
     var otherStateToSet = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     otherStateToSet = pickState(otherStateToSet);
-    _this4.internalSetState(_extends$5({ highlightedIndex: highlightedIndex }, otherStateToSet));
+    _this4.internalSetState(_extends$4({ highlightedIndex: highlightedIndex }, otherStateToSet));
   };
 
   this.clearSelection = function (cb) {
@@ -2400,7 +4620,7 @@ var _initialiseProps = function () {
 
   this.selectItem = function (item, otherStateToSet, cb) {
     otherStateToSet = pickState(otherStateToSet);
-    _this4.internalSetState(_extends$5({
+    _this4.internalSetState(_extends$4({
       isOpen: false,
       highlightedIndex: _this4.props.defaultHighlightedIndex,
       selectedItem: item,
@@ -2433,7 +4653,7 @@ var _initialiseProps = function () {
     // preserving the cursor position.
     // See https://github.com/paypal/downshift/issues/217 for more info.
     if (!isStateToSetFunction && stateToSet.hasOwnProperty('inputValue')) {
-      _this4.props.onInputValueChange(stateToSet.inputValue, _extends$5({}, _this4.getStateAndHelpers(), stateToSet));
+      _this4.props.onInputValueChange(stateToSet.inputValue, _extends$4({}, _this4.getStateAndHelpers(), stateToSet));
     }
     return _this4.setState(function (state) {
       state = _this4.getState(state);
@@ -2483,7 +4703,7 @@ var _initialiseProps = function () {
       // if stateToSet is a function, then we weren't able to call onInputValueChange
       // earlier, so we'll call it now that we know what the inputValue state will be.
       if (isStateToSetFunction && newStateToSet.hasOwnProperty('inputValue')) {
-        _this4.props.onInputValueChange(newStateToSet.inputValue, _extends$5({}, _this4.getStateAndHelpers(), newStateToSet));
+        _this4.props.onInputValueChange(newStateToSet.inputValue, _extends$4({}, _this4.getStateAndHelpers(), newStateToSet));
       }
 
       return nextState;
@@ -2533,7 +4753,7 @@ var _initialiseProps = function () {
     _this4.getRootProps.called = true;
     _this4.getRootProps.refKey = refKey;
     _this4.getRootProps.suppressRefError = suppressRefError;
-    return _extends$5((_babelHelpers$extends = {}, _babelHelpers$extends[refKey] = _this4.rootRef, _babelHelpers$extends), rest);
+    return _extends$4((_babelHelpers$extends = {}, _babelHelpers$extends[refKey] = _this4.rootRef, _babelHelpers$extends), rest);
   };
 
   this.keyDownHandlers = {
@@ -2570,7 +4790,7 @@ var _initialiseProps = function () {
       this.reset({ type: Downshift.stateChangeTypes.keyDownEscape });
     }
   };
-  this.buttonKeyDownHandlers = _extends$5({}, this.keyDownHandlers, {
+  this.buttonKeyDownHandlers = _extends$4({}, this.keyDownHandlers, {
     ' ': function _(event) {
       event.preventDefault();
       this.toggleMenu({ type: Downshift.stateChangeTypes.keyDownSpaceButton });
@@ -2594,7 +4814,7 @@ var _initialiseProps = function () {
       onBlur: composeEventHandlers(onBlur, _this4.button_handleBlur)
     };
     var eventHandlers = rest.disabled ? {} : enabledEventHandlers;
-    return _extends$5({
+    return _extends$4({
       type: 'button',
       role: 'button',
       'aria-label': isOpen ? 'close menu' : 'open menu',
@@ -2653,7 +4873,7 @@ var _initialiseProps = function () {
       throw new Error('downshift: You provided the htmlFor of "' + props.htmlFor + '" for your label, but the id of your input is "' + _this4.inputId + '". You must either remove the id from your input or set the htmlFor of the label equal to the input id.');
     }
     _this4.inputId = firstDefined(_this4.inputId, props.htmlFor, _this4.id + '-input');
-    return _extends$5({}, props, {
+    return _extends$4({}, props, {
       htmlFor: _this4.inputId
     });
   };
@@ -2684,7 +4904,7 @@ var _initialiseProps = function () {
         highlightedIndex = _getState4.highlightedIndex;
 
     var eventHandlers = rest.disabled ? {} : (_ref6 = {}, _ref6[onChangeKey] = composeEventHandlers(onChange, onInput, _this4.input_handleChange), _ref6.onKeyDown = composeEventHandlers(onKeyDown, _this4.input_handleKeyDown), _ref6.onBlur = composeEventHandlers(onBlur, _this4.input_handleBlur), _ref6);
-    return _extends$5({
+    return _extends$4({
       role: 'combobox',
       'aria-autocomplete': 'list',
       'aria-expanded': isOpen,
@@ -2778,7 +4998,7 @@ var _initialiseProps = function () {
 
     var eventHandlers = rest.disabled ? {} : enabledEventHandlers;
 
-    return _extends$5({
+    return _extends$4({
       id: _this4.getItemId(index)
     }, eventHandlers, rest);
   };
@@ -2794,7 +5014,7 @@ var _initialiseProps = function () {
     otherStateToSet = pickState(otherStateToSet);
     _this4.internalSetState(function (_ref8) {
       var selectedItem = _ref8.selectedItem;
-      return _extends$5({
+      return _extends$4({
         isOpen: false,
         highlightedIndex: _this4.props.defaultHighlightedIndex,
         inputValue: _this4.props.itemToString(selectedItem)
@@ -2810,7 +5030,7 @@ var _initialiseProps = function () {
     _this4.internalSetState(function (_ref9) {
       var isOpen = _ref9.isOpen;
 
-      return _extends$5({ isOpen: !isOpen }, otherStateToSet);
+      return _extends$4({ isOpen: !isOpen }, otherStateToSet);
     }, function () {
       var _getState5 = _this4.getState(),
           isOpen = _getState5.isOpen;
@@ -2838,7 +5058,7 @@ var _initialiseProps = function () {
     var state = _this4.getState();
     var item = _this4.items[state.highlightedIndex];
     var resultCount = _this4.getItemCount();
-    var status = _this4.props.getA11yStatusMessage(_extends$5({
+    var status = _this4.props.getA11yStatusMessage(_extends$4({
       itemToString: _this4.props.itemToString,
       previousResultCount: _this4.previousResultCount,
       resultCount: resultCount,
@@ -3015,7 +5235,7 @@ Object.defineProperty(Target$1, "__esModule", {
   value: true
 });
 
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react$2 = React__default['default'];
 
@@ -3048,7 +5268,7 @@ var Target = function Target(props, context) {
     return children({ targetProps: targetProps, restProps: restProps });
   }
 
-  var componentProps = _extends$4({}, restProps);
+  var componentProps = _extends$3({}, restProps);
 
   if (typeof component === 'string') {
     componentProps.ref = targetRef;
@@ -3482,7 +5702,7 @@ var defineProperty = function (obj, key, value) {
   return obj;
 };
 
-var _extends$3 = Object.assign || function (target) {
+var _extends$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -3504,7 +5724,7 @@ var _extends$3 = Object.assign || function (target) {
  * @returns {Object} ClientRect like output
  */
 function getClientRect(offsets) {
-  return _extends$3({}, offsets, {
+  return _extends$2({}, offsets, {
     right: offsets.left + offsets.width,
     bottom: offsets.top + offsets.height
   });
@@ -3792,7 +6012,7 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
   };
 
   var sortedAreas = Object.keys(rects).map(function (key) {
-    return _extends$3({
+    return _extends$2({
       key: key
     }, rects[key], {
       area: getArea(rects[key])
@@ -4434,9 +6654,9 @@ function computeStyle(data, options) {
   };
 
   // Update `data` attributes, styles and arrowStyles
-  data.attributes = _extends$3({}, attributes, data.attributes);
-  data.styles = _extends$3({}, styles, data.styles);
-  data.arrowStyles = _extends$3({}, data.offsets.arrow, data.arrowStyles);
+  data.attributes = _extends$2({}, attributes, data.attributes);
+  data.styles = _extends$2({}, styles, data.styles);
+  data.arrowStyles = _extends$2({}, data.offsets.arrow, data.arrowStyles);
 
   return data;
 }
@@ -4716,7 +6936,7 @@ function flip(data, options) {
 
       // this object contains `position`, we want to preserve it along with
       // any additional property we may add in the future
-      data.offsets.popper = _extends$3({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
+      data.offsets.popper = _extends$2({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
 
       data = runModifiers(data.instance.modifiers, data, 'flip');
     }
@@ -4990,7 +7210,7 @@ function preventOverflow(data, options) {
 
   order.forEach(function (placement) {
     var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
-    popper = _extends$3({}, popper, check[side](placement));
+    popper = _extends$2({}, popper, check[side](placement));
   });
 
   data.offsets.popper = popper;
@@ -5025,7 +7245,7 @@ function shift(data) {
       end: defineProperty({}, side, reference[side] + reference[measurement] - popper[measurement])
     };
 
-    data.offsets.popper = _extends$3({}, popper, shiftOffsets[shiftvariation]);
+    data.offsets.popper = _extends$2({}, popper, shiftOffsets[shiftvariation]);
   }
 
   return data;
@@ -5557,7 +7777,7 @@ var Popper$1 = function () {
     this.update = debounce(this.update.bind(this));
 
     // with {} we create a new object with the options inside it
-    this.options = _extends$3({}, Popper.Defaults, options);
+    this.options = _extends$2({}, Popper.Defaults, options);
 
     // init state
     this.state = {
@@ -5572,13 +7792,13 @@ var Popper$1 = function () {
 
     // Deep merge modifiers options
     this.options.modifiers = {};
-    Object.keys(_extends$3({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-      _this.options.modifiers[name] = _extends$3({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+    Object.keys(_extends$2({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+      _this.options.modifiers[name] = _extends$2({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
     });
 
     // Refactoring modifiers' list (Object => Array)
     this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-      return _extends$3({
+      return _extends$2({
         name: name
       }, _this.options.modifiers[name]);
     })
@@ -5698,7 +7918,7 @@ Object.defineProperty(Popper$2, "__esModule", {
   value: true
 });
 
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -5771,7 +7991,7 @@ var Popper = function (_Component) {
         };
       }
 
-      return _extends$2({
+      return _extends$1({
         position: data.offsets.popper.position
       }, data.styles);
     }, _this._getPopperPlacement = function () {
@@ -5838,7 +8058,7 @@ var Popper = function (_Component) {
           placement = _props.placement,
           eventsEnabled = _props.eventsEnabled;
 
-      var modifiers = _extends$2({}, this.props.modifiers, {
+      var modifiers = _extends$1({}, this.props.modifiers, {
         applyStyle: { enabled: false },
         updateState: this._updateStateModifier
       });
@@ -5895,8 +8115,8 @@ var Popper = function (_Component) {
         });
       }
 
-      var componentProps = _extends$2({}, restProps, {
-        style: _extends$2({}, restProps.style, popperStyle),
+      var componentProps = _extends$1({}, restProps, {
+        style: _extends$1({}, restProps.style, popperStyle),
         'data-placement': popperPlacement,
         'data-x-out-of-boundaries': popperHide
       });
@@ -5942,7 +8162,7 @@ Object.defineProperty(Arrow$1, "__esModule", {
   value: true
 });
 
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = React__default['default'];
 
@@ -5979,8 +8199,8 @@ var Arrow = function Arrow(props, context) {
     return children({ arrowProps: arrowProps, restProps: restProps });
   }
 
-  var componentProps = _extends$1({}, restProps, {
-    style: _extends$1({}, arrowStyle, restProps.style)
+  var componentProps = _extends({}, restProps, {
+    style: _extends({}, arrowStyle, restProps.style)
   });
 
   if (typeof component === 'string') {
@@ -7740,7 +9960,7 @@ module.exports = require$$7__default['default'];
 /* 16 */
 /***/ (function(module, exports) {
 
-module.exports = require$$8__default['default'];
+module.exports = Paper__default['default'];
 
 /***/ }),
 /* 17 */
@@ -7821,7 +10041,7 @@ exports.geocodeBySuggestion = function geocodeBySuggestion(_ref) {
 
 var MUIPlacesAutocomplete = /*@__PURE__*/getDefaultExportFromCjs(dist.exports);
 
-var useStyles$f = styles.makeStyles({
+var useStyles$f = styles$1.makeStyles({
     root: {
         position: "relative",
         width: "100%"
@@ -13576,7 +15796,6 @@ var datatable_msg_fr = {
     }
 };
 
-//TODO: add i18n in this repo
 var messages_fr = {
     global: {
         nc: "-",
@@ -14149,153 +16368,6 @@ function invariant(condition, message, Err) {
     }
 }
 
-var src = {exports: {}};
-
-//
-// Main
-//
-
-function memoize (fn, options) {
-  var cache = options && options.cache
-    ? options.cache
-    : cacheDefault;
-
-  var serializer = options && options.serializer
-    ? options.serializer
-    : serializerDefault;
-
-  var strategy = options && options.strategy
-    ? options.strategy
-    : strategyDefault;
-
-  return strategy(fn, {
-    cache: cache,
-    serializer: serializer
-  })
-}
-
-//
-// Strategy
-//
-
-function isPrimitive (value) {
-  return value == null || typeof value === 'number' || typeof value === 'boolean' // || typeof value === "string" 'unsafe' primitive for our needs
-}
-
-function monadic (fn, cache, serializer, arg) {
-  var cacheKey = isPrimitive(arg) ? arg : serializer(arg);
-
-  var computedValue = cache.get(cacheKey);
-  if (typeof computedValue === 'undefined') {
-    computedValue = fn.call(this, arg);
-    cache.set(cacheKey, computedValue);
-  }
-
-  return computedValue
-}
-
-function variadic (fn, cache, serializer) {
-  var args = Array.prototype.slice.call(arguments, 3);
-  var cacheKey = serializer(args);
-
-  var computedValue = cache.get(cacheKey);
-  if (typeof computedValue === 'undefined') {
-    computedValue = fn.apply(this, args);
-    cache.set(cacheKey, computedValue);
-  }
-
-  return computedValue
-}
-
-function assemble (fn, context, strategy, cache, serialize) {
-  return strategy.bind(
-    context,
-    fn,
-    cache,
-    serialize
-  )
-}
-
-function strategyDefault (fn, options) {
-  var strategy = fn.length === 1 ? monadic : variadic;
-
-  return assemble(
-    fn,
-    this,
-    strategy,
-    options.cache.create(),
-    options.serializer
-  )
-}
-
-function strategyVariadic (fn, options) {
-  var strategy = variadic;
-
-  return assemble(
-    fn,
-    this,
-    strategy,
-    options.cache.create(),
-    options.serializer
-  )
-}
-
-function strategyMonadic (fn, options) {
-  var strategy = monadic;
-
-  return assemble(
-    fn,
-    this,
-    strategy,
-    options.cache.create(),
-    options.serializer
-  )
-}
-
-//
-// Serializer
-//
-
-function serializerDefault () {
-  return JSON.stringify(arguments)
-}
-
-//
-// Cache
-//
-
-function ObjectWithoutPrototypeCache () {
-  this.cache = Object.create(null);
-}
-
-ObjectWithoutPrototypeCache.prototype.has = function (key) {
-  return (key in this.cache)
-};
-
-ObjectWithoutPrototypeCache.prototype.get = function (key) {
-  return this.cache[key]
-};
-
-ObjectWithoutPrototypeCache.prototype.set = function (key, value) {
-  this.cache[key] = value;
-};
-
-var cacheDefault = {
-  create: function create () {
-    return new ObjectWithoutPrototypeCache()
-  }
-};
-
-//
-// API
-//
-
-src.exports = memoize;
-src.exports.strategies = {
-  variadic: strategyVariadic,
-  monadic: strategyMonadic
-};
-
 var defaultErrorHandler = function (error) {
     if (process.env.NODE_ENV !== 'production') {
         console.error(error);
@@ -14855,7 +16927,7 @@ function invariantMapOrSet(target, command) {
 
 var update = /*@__PURE__*/getDefaultExportFromCjs(immutabilityHelper.exports);
 
-var useFilterStyles = styles.makeStyles(function (theme) { return ({
+var useFilterStyles = styles$1.makeStyles(function (theme) { return ({
     root: {
         backgroundColor: theme.palette.background.default,
         opacity: 0.7
@@ -14940,7 +17012,7 @@ var DatatableFilter = function (_a) {
             displayLocalActions && React__default['default'].createElement(core.TableCell, null, "\u00A0"))));
 };
 
-var useToolbarStyles = styles.makeStyles(function (theme) { return ({
+var useToolbarStyles = styles$1.makeStyles(function (theme) { return ({
     root: {
         borderBottom: "1px solid " + theme.palette.divider,
         backgroundColor: "white",
@@ -15038,7 +17110,7 @@ var DatatableToolbar = function (props) {
                                         } }))))))));
 };
 
-var useDisplayStyles = styles.makeStyles(function (theme) { return ({
+var useDisplayStyles = styles$1.makeStyles(function (theme) { return ({
     root: {
         position: "relative",
         maxWidth: "100%",
@@ -15278,7 +17350,7 @@ var ParticeepDialogTitle = function (props) {
                 React__default['default'].createElement(icons.Close, null))) : React__default['default'].createElement(React__default['default'].Fragment, null))));
 };
 
-var useStyles$c = styles.makeStyles(function (theme) { return ({
+var useStyles$c = styles$1.makeStyles(function (theme) { return ({
     content: {
         paddingTop: function (props) { return props.fullScreen ? theme.spacing(5) : 0; }
     }
@@ -18222,7 +20294,6 @@ var SuggestionBox = function (props) {
                 T.amount_suggest.pick.label[fundraiseType]))));
 };
 
-//TODO: add unit tests for functions below
 var amountSuggestMaxWidth = 430;
 var buildInitialSuggestionPositions = function (nbSuggestions) {
     return Array(nbSuggestions).fill(0)
@@ -18488,47 +20559,6 @@ var AmountSuggest = function (props) {
     };
     return (React__default['default'].createElement(AmountSuggestDisplay, { onAmountChange: onTypedAmountChange, typedAmount: typedAmount, prev: prev, canPrev: canPrev(), next: next, canNext: canNext(), sharePrice: sharePrice, suggestedTicks: suggestedTicks, pick: pick, pickedTick: pickedTick, currency: currency, fundraiseType: fundraiseType, min: min, max: max }));
 };
-
-function toVal(mix) {
-	var k, y, str='';
-
-	if (typeof mix === 'string' || typeof mix === 'number') {
-		str += mix;
-	} else if (typeof mix === 'object') {
-		if (Array.isArray(mix)) {
-			for (k=0; k < mix.length; k++) {
-				if (mix[k]) {
-					if (y = toVal(mix[k])) {
-						str && (str += ' ');
-						str += y;
-					}
-				}
-			}
-		} else {
-			for (k in mix) {
-				if (mix[k]) {
-					str && (str += ' ');
-					str += k;
-				}
-			}
-		}
-	}
-
-	return str;
-}
-
-function clsx () {
-	var i=0, tmp, x, str='';
-	while (i < arguments.length) {
-		if (tmp = arguments[i++]) {
-			if (x = toVal(tmp)) {
-				str && (str += ' ');
-				str += x;
-			}
-		}
-	}
-	return str;
-}
 
 var ExpandMore = {};
 
@@ -18881,39 +20911,6 @@ var Item = function (_a) {
             React__default['default'].createElement(icons.AddCircle, { classes: { root: classes.addIcon } })
             : React__default['default'].createElement(icons.RemoveCircle, { classes: { root: classes.removeIcon } }))));
 };
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
 
 function _setPrototypeOf(o, p) {
   _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
@@ -19861,7 +21858,7 @@ var CSSTransition = /*#__PURE__*/function (_React$Component) {
         _this$props.classNames;
         var props = _objectWithoutPropertiesLoose(_this$props, ["classNames"]);
 
-    return /*#__PURE__*/React__default['default'].createElement(Transition$1, _extends({}, props, {
+    return /*#__PURE__*/React__default['default'].createElement(Transition$1, _extends$5({}, props, {
       onEnter: this.onEnter,
       onEntered: this.onEntered,
       onEntering: this.onEntering,
@@ -19877,7 +21874,7 @@ var CSSTransition = /*#__PURE__*/function (_React$Component) {
 CSSTransition.defaultProps = {
   classNames: ''
 };
-CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, Transition$1.propTypes, {
+CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends$5({}, Transition$1.propTypes, {
   /**
    * The animation classNames applied to the component as it appears, enters,
    * exits or has finished the transition. A single name can be provided, which
@@ -20241,7 +22238,7 @@ var TransitionGroup = /*#__PURE__*/function (_React$Component) {
 
     if (this.mounted) {
       this.setState(function (state) {
-        var children = _extends({}, state.children);
+        var children = _extends$5({}, state.children);
 
         delete children[child.key];
         return {
@@ -21055,7 +23052,7 @@ var overrides = {
     MuiLink: link
 };
 
-var finstoreTheme = styles.createMuiTheme(__assign({ props: props, overrides: overrides }, customTheme));
+var finstoreTheme = styles$1.createMuiTheme(__assign({ props: props, overrides: overrides }, customTheme));
 
 exports.Gender = void 0;
 (function (Gender) {
