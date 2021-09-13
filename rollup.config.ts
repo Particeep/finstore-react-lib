@@ -15,10 +15,13 @@ export default {
     { file: packageJson.module, format: "esm", sourcemap: true }
   ],
   plugins: [
+    typescript({
+      tsconfig: 'tsconfig.json',
+    }),
     peerDepsExternal(),
     resolve(),
     commonjs(),
-    typescript({ useTsconfigDeclarationDir: true }),
+    //typescript({ useTsconfigDeclarationDir: true }),
     copy(),
     json(),
     url({
@@ -26,5 +29,5 @@ export default {
       limit: Infinity,
     })
   ],
-  external: ["@material-ui/core"]
+  external: ["react", "@material-ui/core"]
 }
