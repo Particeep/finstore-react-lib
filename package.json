@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Finstore react lib",
   "main": "build/index.js",
-  "module": "build/index.esm.js",
+  "module": "build/index.es.js",
   "types": "build/index.d.ts",
   "scripts": {
     "storybook": "start-storybook -p 6006 -s ./public:/public",
