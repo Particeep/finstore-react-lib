@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent } from "react"
-import Autocomplete, { AutocompleteRenderInputParams } from "@material-ui/lab/Autocomplete"
+
 import { makeStyles, TextField } from "@material-ui/core"
 import { ClassNameMap } from "@material-ui/core/styles/withStyles"
 import { paper } from "../../theme/overrides/paper"
@@ -58,7 +58,7 @@ export const AutocompleteInput = ({ options, placeholder, id, onChange, onSelect
 
   const [ inputValue, setInputValue ]: Array<any> = useState<string>("")
 
-  const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => (<TextField {...params} fullWidth placeholder={placeholder} />)
+  //const renderInput = (params: AutocompleteRenderInputParams): JSX.Element => (<TextField {...params} fullWidth placeholder={placeholder} />)
 
   const renderOption = (option: AutocompleteData): JSX.Element => {
     const position: number = option.label.toLowerCase().indexOf(inputValue.toLowerCase())
@@ -93,7 +93,8 @@ export const AutocompleteInput = ({ options, placeholder, id, onChange, onSelect
   }
 
   return (
-    <Autocomplete
+      <div>
+        {/*<Autocomplete
       className={classes.root}
       classes={{
         inputRoot : classes.input,
@@ -108,6 +109,7 @@ export const AutocompleteInput = ({ options, placeholder, id, onChange, onSelect
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       {...id}
-    />
+    />*/}
+      </div>
   )
 }

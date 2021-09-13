@@ -29,5 +29,11 @@ export default {
       limit: Infinity,
     })
   ],
-  external: ["react", "@material-ui/core", "@material-ui/lab", "@material-ui/pickers", "@material-ui/icons", "react-dom"]
+  external: [
+    "react",
+    "react-dom",
+    "@material-ui/core",
+    "@material-ui/icons",
+    "@material-ui/pickers"
+  ]
 }
