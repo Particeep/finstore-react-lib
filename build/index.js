@@ -9582,27 +9582,10 @@ var AmountSuggestDisplay = function (props) {
             React__default['default'].createElement(SuggestionHint, { amount: typedAmount, sharePrice: sharePrice, currency: currency, min: min, max: max }))));
 };
 
-var useWindowSize = function () {
-    var _a = React__default['default'].useState({
-        width: window.innerWidth,
-        height: window.innerHeight
-    }), windowSize = _a[0], setWindowSize = _a[1];
-    function changeWindowSize() {
-        setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    }
-    React__default['default'].useEffect(function () {
-        window.addEventListener("resize", changeWindowSize);
-        return function () {
-            window.removeEventListener("resize", changeWindowSize);
-        };
-    }, []);
-    return windowSize;
-};
-
 var AmountSuggest = function (props) {
     var min = props.min, max = props.max, onSelect = props.onSelect, sharePrice = props.sharePrice, currency = props.currency, fundraiseType = props.fundraiseType;
-    var windowSize = useWindowSize();
-    var computeSuggestionNb = function () { return windowSize.width > amountSuggestMaxWidth ? 3 : 2; };
+    //const windowSize: IWindowSize = useWindowSize()
+    var computeSuggestionNb = function () { return 3 ; };
     var _a = React.useState(), suggestedTicks = _a[0], setSuggestedTicks = _a[1];
     var _b = React.useState(), pickedTick = _b[0], setPickedTick = _b[1];
     var _c = React.useState(), typedAmount = _c[0], setTypedAmount = _c[1];
@@ -9622,7 +9605,7 @@ var AmountSuggest = function (props) {
         setSuggestion(0, suggestionsNb);
         setTypedAmount(0);
         setPickedTick(0);
-    }, [windowSize]);
+    }, []);
     var setSuggestion = function (amount, suggestionNumber) {
         var suggestions = computeNewTicks(amount, sharePrice, min, max, suggestionNumber);
         setSuggestedTicks(suggestions.suggestedTicks);

@@ -3,7 +3,6 @@ import { BigNumber } from "bignumber.js"
 import { ReactState } from "../types"
 import AmountSuggestDisplay from "./AmountSuggestDisplay"
 import { amountSuggestMaxWidth, computeNewTicks, ISuggestions } from "./helpers"
-import { IWindowSize, useWindowSize } from "../../utils"
 
 export interface AmountSuggestProps {
   sharePrice: number
@@ -16,8 +15,8 @@ export interface AmountSuggestProps {
 
 export const AmountSuggest = (props: AmountSuggestProps): JSX.Element => {
   const { min, max, onSelect, sharePrice, currency, fundraiseType }: AmountSuggestProps = props
-  const windowSize: IWindowSize = useWindowSize()
-  const computeSuggestionNb = (): number => windowSize.width > amountSuggestMaxWidth ? 3 : 2
+  //const windowSize: IWindowSize = useWindowSize()
+  const computeSuggestionNb = (): number => 500 > amountSuggestMaxWidth ? 3 : 2
 
   const [ suggestedTicks, setSuggestedTicks ]: ReactState<Array<number>> = useState()
   const [ pickedTick, setPickedTick ]: ReactState<number> = useState()
@@ -42,7 +41,7 @@ export const AmountSuggest = (props: AmountSuggestProps): JSX.Element => {
     setSuggestion(0, suggestionsNb)
     setTypedAmount(0)
     setPickedTick(0)
-  }, [ windowSize ])
+  }, [  ])
 
   const setSuggestion = (amount: number, suggestionNumber: number) => {
     const suggestions: ISuggestions = computeNewTicks(amount, sharePrice, min, max, suggestionNumber)
