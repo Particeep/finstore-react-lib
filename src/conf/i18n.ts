@@ -1,5 +1,4 @@
 //TODO: add i18n in this repo
-import { item_pickers_msg_fr, datatable_msg_fr, amount_suggest_msg_fr } from "../components/messages"
 
 const messages_fr: any = {
   global : {
@@ -15,9 +14,6 @@ const messages_fr: any = {
     load_more : "Charger plus",
     next      : "Suivant"
   },
-  datatable      : datatable_msg_fr,
-  amount_suggest : amount_suggest_msg_fr,
-  items_pickers  : item_pickers_msg_fr,
   currency       : {
     symbol : {
       EUR : "€",

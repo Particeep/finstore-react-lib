@@ -6,7 +6,6 @@ import { formats } from "../src/conf/config"
 import { jsxDecorator } from "storybook-addon-jsx"
 import { initializeWorker, mswDecorator } from "msw-storybook-addon"
 import { ThemeProvider } from "@material-ui/core/styles"
-import { finstoreTheme } from "../src/theme"
 import {CssBaseline} from "@material-ui/core";
 
 export const parameters = {
@@ -33,10 +32,8 @@ export const decorators = [
   (Story) => (
     <MuiPickersUtilsProvider utils={MomentUtils}>
       <IntlProvider locale={"fr"} formats={formats}>
-        <ThemeProvider theme={finstoreTheme}>
           <CssBaseline />
           <Story />
-        </ThemeProvider>
       </IntlProvider>
     </MuiPickersUtilsProvider>
   )
